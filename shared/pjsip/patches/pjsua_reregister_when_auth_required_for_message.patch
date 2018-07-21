@@ -1,0 +1,15 @@
+diff -rupN -x '*.mak' -x '*.orig' -x '*.rej' -x '*~' -x '*auto.h' pjproject-2.4-org/pjsip/src/pjsua-lib/pjsua_im.c pjproject-2.4-qliq/pjsip/src/pjsua-lib/pjsua_im.c
+--- pjproject-2.4-org/pjsip/src/pjsua-lib/pjsua_im.c	2014-08-19 02:54:34.000000000 +0200
++++ pjproject-2.4-qliq/pjsip/src/pjsua-lib/pjsua_im.c	2015-05-26 13:51:40.744209665 +0200
+@@ -385,6 +385,11 @@ static void im_callback(void *token, pjs
+ 		/* Re-send request */
+ 		status = pjsip_endpt_send_request( pjsua_var.endpt, tdata, -1,
+ 						   im_data2, &im_callback);
++		/*
++		 * qliqSoft: Re-Register.
++		 */
++		pjsua_acc_set_registration(im_data->acc_id, PJ_TRUE);
++
+ 		if (status == PJ_SUCCESS) {
+ 		    /* Done */
+ 		    return;

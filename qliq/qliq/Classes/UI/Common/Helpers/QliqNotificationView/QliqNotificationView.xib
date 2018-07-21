@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="QliqNotificationView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_default_blue" translatesAutoresizingMaskIntoConstraints="NO" id="X2K-X7-6MW" userLabel="Avatar Image View">
+                    <rect key="frame" x="10" y="36" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="X2K-X7-6MW" secondAttribute="height" multiplier="1:1" id="dBb-0j-Sex"/>
+                        <constraint firstAttribute="width" secondItem="X2K-X7-6MW" secondAttribute="height" multiplier="1:1" id="kqy-tO-2LE"/>
+                        <constraint firstAttribute="height" constant="50" id="qmG-lI-snf"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="kqy-tO-2LE"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pavel One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="fts-zn-vhp">
+                    <rect key="frame" x="65" y="44" width="210" height="20"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Zkc-PR-RaE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="ReI-Wi-mls">
+                    <rect key="frame" x="65" y="64" width="210" height="20"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Pq8-LQ-BmC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nhq-g6-29S" userLabel="Close Button">
+                    <rect key="frame" x="275" y="0.0" width="45" height="96"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="dRO-E9-VzP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <inset key="contentEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="x">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="didPressCloseButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="XUa-mH-Tlu"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.3411764705882353" alpha="0.95059267241379308" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="Nhq-g6-29S" firstAttribute="leading" secondItem="fts-zn-vhp" secondAttribute="trailing" id="1G8-Tf-uOc"/>
+                <constraint firstItem="fts-zn-vhp" firstAttribute="leading" secondItem="X2K-X7-6MW" secondAttribute="trailing" constant="10" id="4k6-FO-So6"/>
+                <constraint firstItem="Nhq-g6-29S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6vL-am-JAh"/>
+                <constraint firstItem="fts-zn-vhp" firstAttribute="centerY" secondItem="X2K-X7-6MW" secondAttribute="centerY" id="6vO-7R-GPK"/>
+                <constraint firstItem="fts-zn-vhp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="8VN-Cx-Wc4"/>
+                <constraint firstAttribute="trailing" secondItem="Nhq-g6-29S" secondAttribute="trailing" id="DRk-l7-Hc4"/>
+                <constraint firstItem="fts-zn-vhp" firstAttribute="centerY" secondItem="X2K-X7-6MW" secondAttribute="centerY" id="DgS-G3-hWt"/>
+                <constraint firstItem="ReI-Wi-mls" firstAttribute="leading" secondItem="X2K-X7-6MW" secondAttribute="trailing" constant="10" id="EhE-Pp-gOi"/>
+                <constraint firstAttribute="bottom" secondItem="ReI-Wi-mls" secondAttribute="bottom" constant="12" id="Ixk-2E-FzP"/>
+                <constraint firstItem="fts-zn-vhp" firstAttribute="leading" secondItem="X2K-X7-6MW" secondAttribute="trailing" constant="10" id="KBG-K2-kTL"/>
+                <constraint firstItem="ReI-Wi-mls" firstAttribute="top" secondItem="fts-zn-vhp" secondAttribute="bottom" id="KlE-9b-vvL"/>
+                <constraint firstAttribute="bottom" secondItem="Nhq-g6-29S" secondAttribute="bottom" id="OoE-HG-MvP"/>
+                <constraint firstItem="X2K-X7-6MW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="VgE-gy-1o1"/>
+                <constraint firstItem="Nhq-g6-29S" firstAttribute="leading" secondItem="ReI-Wi-mls" secondAttribute="trailing" id="WyA-S9-yeP"/>
+                <constraint firstItem="ReI-Wi-mls" firstAttribute="leading" secondItem="X2K-X7-6MW" secondAttribute="trailing" constant="5" id="ZOz-tN-ZTN"/>
+                <constraint firstItem="ReI-Wi-mls" firstAttribute="top" secondItem="fts-zn-vhp" secondAttribute="bottom" id="aJC-4i-HyH"/>
+                <constraint firstItem="ReI-Wi-mls" firstAttribute="top" secondItem="X2K-X7-6MW" secondAttribute="bottom" constant="-21" id="j1Q-77-SJN"/>
+                <constraint firstItem="ReI-Wi-mls" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="jbk-pU-YiD"/>
+                <constraint firstItem="fts-zn-vhp" firstAttribute="leading" secondItem="X2K-X7-6MW" secondAttribute="trailing" constant="5" id="kMf-q5-9cZ"/>
+                <constraint firstItem="fts-zn-vhp" firstAttribute="top" secondItem="X2K-X7-6MW" secondAttribute="top" id="mnN-5p-t3V"/>
+                <constraint firstItem="ReI-Wi-mls" firstAttribute="top" secondItem="fts-zn-vhp" secondAttribute="bottom" constant="5" id="ouZ-G9-idC"/>
+                <constraint firstItem="X2K-X7-6MW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="thP-7P-zR8"/>
+                <constraint firstAttribute="bottom" secondItem="X2K-X7-6MW" secondAttribute="bottom" constant="10" id="uVS-Ka-Or3"/>
+                <constraint firstItem="X2K-X7-6MW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="udr-cD-7By"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="VgE-gy-1o1"/>
+                    <exclude reference="thP-7P-zR8"/>
+                    <exclude reference="4k6-FO-So6"/>
+                    <exclude reference="6vO-7R-GPK"/>
+                    <exclude reference="8VN-Cx-Wc4"/>
+                    <exclude reference="DgS-G3-hWt"/>
+                    <exclude reference="KBG-K2-kTL"/>
+                    <exclude reference="mnN-5p-t3V"/>
+                    <exclude reference="EhE-Pp-gOi"/>
+                    <exclude reference="j1Q-77-SJN"/>
+                    <exclude reference="jbk-pU-YiD"/>
+                    <exclude reference="ouZ-G9-idC"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="avatarHeight" destination="qmG-lI-snf" id="8jo-TD-nZd"/>
+                <outlet property="avatarImageView" destination="X2K-X7-6MW" id="Tzu-xP-GCC"/>
+                <outlet property="closeButton" destination="Nhq-g6-29S" id="cek-IM-Yc7"/>
+                <outlet property="descriptionLabel" destination="ReI-Wi-mls" id="ChC-cZ-H6K"/>
+                <outlet property="titleLabel" destination="fts-zn-vhp" id="LSb-wU-wfN"/>
+                <outletCollection property="gestureRecognizers" destination="4KB-OZ-Vzr" appends="YES" id="L03-KK-elB"/>
+            </connections>
+            <point key="canvasLocation" x="375" y="-6"/>
+        </view>
+        <tapGestureRecognizer id="4KB-OZ-Vzr">
+            <connections>
+                <action selector="tapNotificationView:" destination="iN0-l3-epB" id="dy1-2Q-3Mv"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="avatar_default_blue" width="56" height="56"/>
+    </resources>
+</document>

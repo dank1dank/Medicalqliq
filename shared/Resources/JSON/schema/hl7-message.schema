@@ -1,0 +1,141 @@
+{
+   "description": "An HL7 message",
+   "properties": {
+      "Message": {
+         "properties": {
+            "Command": {
+               "pattern": "hl7message",
+               "required": true,
+               "type": "string"
+            },
+            "Data": {
+               "items": {
+                "additionalProperties": true,
+                  "properties": {
+                     "admit_date": {
+                        "required": true,
+                        "type": "string"
+                     },
+                     "attending_physician": {
+                        "properties": {
+                           "name": {
+                              "required": true,
+                              "type": "string"
+                           },
+                           "npi": {
+                              "required": true,
+                              "type": "string"
+                           }
+                        },
+                        "required": true,
+                        "type": "object"
+                     },
+                     "discharge_date": {
+                        "required": false,
+                        "type": "string"
+                     },
+                     "event_type": {
+                        "required": true,
+                        "type": "string"
+                     },
+                     "message_control_id": {
+                        "required": false,
+                        "type": "string"
+                     },
+                     "mrn": {
+                        "required": false,
+                        "type": "string"
+                     },
+                     "patient": {
+                        "properties": {
+                           "date_of_birth": {
+                              "format": "date",
+                              "required": false,
+                              "type": "string"
+                           },
+                           "email": {
+                              "required": false,
+                              "type": "string"
+                           },
+                           "first_name": {
+                              "required": true,
+                              "type": "string"
+                           },
+                           "gender": {
+                              "enum": [ "M", "F" ],
+                              "required": true,
+                              "type": "string"
+                           },
+                           "insurance": {
+                              "required": false,
+                              "type": "string"
+                           },
+                           "last_name": {
+                              "required": true,
+                              "type": "string"
+                           },
+                           "middle_name": {
+                              "required": false,
+                              "type": "string"
+                           },
+                           "phone": {
+                              "required": false,
+                              "type": "string"
+                           },
+                           "race": {
+                              "required": false,
+                              "type": "string"
+                           }
+                        },
+                        "required": true,
+                        "type": "object"
+                     },
+                     "patient_account_number": {
+                        "required": false,
+                        "type": "string"
+                     },
+                     "patient_class": {
+                        "required": false,
+                        "type": "string"
+                     },
+                     "referral_physician": {
+                        "properties": {
+                           "name": {
+                              "required": true,
+                              "type": "string"
+                           },
+                           "npi": {
+                              "required": true,
+                              "type": "string"
+                           }
+                        },
+                        "required": false,
+                        "type": "object"
+                     },
+                     "room": {
+                        "required": false,
+                        "type": "string"
+                     }
+                  },
+                  "type": "object"
+               },
+               "required": true,
+               "type": "array"
+            },
+            "Subject": {
+               "pattern": "census",
+               "required": true,
+               "type": "string"
+            },
+            "Type": {
+               "pattern": "a2a",
+               "required": true,
+               "type": "string"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

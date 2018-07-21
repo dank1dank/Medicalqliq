@@ -1,0 +1,30 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Command": {
+               "pattern": "set",
+               "required": true,
+               "type": "string"
+            },
+            "Data": {
+               "required": true,
+               "type": "string"
+            },
+            "Subject": {
+               "pattern": "public_key",
+               "required": true,
+               "type": "string"
+            },
+            "Type": {
+               "pattern": "web2client",
+               "required": true,
+               "type": "string"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

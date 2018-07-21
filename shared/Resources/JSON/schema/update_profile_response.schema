@@ -1,0 +1,30 @@
+{
+    "properties": {
+        "Message": {
+            "properties": {
+                "Data": {
+                    "properties": {},
+                    "required": false,
+                    "type": "object"
+                },
+                "Error": {
+                    "properties": {
+                        "error_code": {
+                            "required": false,
+                            "type": "string"
+                        },
+                        "error_msg": {
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "required": false,
+                    "type": "object"
+                }
+            },
+            "required": true,
+            "type": "object"
+        }
+    },
+    "type": "object"
+}

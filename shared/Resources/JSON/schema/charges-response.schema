@@ -1,0 +1,374 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Command": {
+               "pattern": "pull_response",
+               "required": true,
+               "type": "string"
+            },
+            "Data": {
+               "properties": {
+                  "AttendingPhysicianInfo": {
+                     "properties": {
+                        "npi": {
+                           "required": true,
+                           "type": "string"
+                        },
+                        "user_name": {
+                           "required": true,
+                           "type": "string"
+                        }
+                     },
+                     "required": true,
+                     "type": "object"
+                  },
+                  "Charges": {
+                     "items": {
+                        "properties": {
+                           "Encounters": {
+                              "items": {
+                                 "properties": {
+                                    "EncounterCpt": {
+                                       "items": {
+                                          "properties": {
+                                             "EncounterCptModifiers": {
+                                                "items": {
+                                                   "properties": {
+                                                      "last_updated": {
+                                                         "format": "date-time",
+                                                         "required": true,
+                                                         "type": "string"
+                                                      },
+                                                      "last_updated_user": {
+                                                         "required": true,
+                                                         "type": "string"
+                                                      },
+                                                      "modifier": {
+                                                         "required": true,
+                                                         "type": "string"
+                                                      }
+                                                   },
+                                                   "type": "object"
+                                                },
+                                                "required": true,
+                                                "type": "array"
+                                             },
+                                             "EncounterIcd": {
+                                                "items": {
+                                                   "properties": {
+                                                      "icd_code": {
+                                                         "required": true,
+                                                         "type": "string"
+                                                      },
+                                                      "last_updated": {
+                                                         "format": "date-time",
+                                                         "required": true,
+                                                         "type": "string"
+                                                      },
+                                                      "last_updated_user": {
+                                                         "required": true,
+                                                         "type": "string"
+                                                      }
+                                                   },
+                                                   "type": "object"
+                                                },
+                                                "required": true,
+                                                "type": "array"
+                                             },
+                                             "cpt_code": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "created_at": {
+                                                "format": "date-time",
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "created_user": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "last_updated": {
+                                                "format": "date-time",
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "last_updated_user": {
+                                                "required": true,
+                                                "type": "string"
+                                             }
+                                          },
+                                          "type": "object"
+                                       },
+                                       "required": true,
+                                       "type": "array"
+                                    },
+                                    "EncounterNotes": {
+                                       "items": {
+                                          "properties": {
+                                             "last_updated": {
+                                                "format": "date-time",
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "last_updated_user": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "note_type": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "text_note": {
+                                                "required": true,
+                                                "type": "string"
+                                             }
+                                          },
+                                          "type": "object"
+                                       },
+                                       "required": false,
+                                       "type": "array"
+                                    },
+                                    "complete_date": {
+                                       "format": "date-time",
+                                       "required": false,
+                                       "type": "string"
+                                    },
+                                    "date_of_service": {
+                                       "format": "date-time",
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "last_updated": {
+                                       "format": "date-time",
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "last_updated_user": {
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "status": {
+                                       "required": true,
+                                       "type": "integer"
+                                    }
+                                 },
+                                 "type": "object"
+                              },
+                              "required": true,
+                              "type": "array"
+                           },
+                           "Facility": {
+                              "properties": {
+                                 "address": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "city": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "county": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "facility_type": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "medicare_id": {
+                                    "required": false,
+                                    "type": "integer"
+                                 },
+                                 "name": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "state": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "zip": {
+                                    "required": false,
+                                    "type": "string"
+                                 }
+                              },
+                              "required": true,
+                              "type": "object"
+                           },
+                           "Patient": {
+                              "properties": {
+                                 "dob": {
+                                    "format": "date",
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "firstname": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "gender": {
+                                    "enum": [ "Male", "Female" ],
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "lastname": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "middlename": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "race": {
+                                    "required": false,
+                                    "type": "string"
+                                 }
+                              },
+                              "required": true,
+                              "type": "object"
+                           },
+                           "ReferringPhysician": {
+                              "properties": {
+                                 "address": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "city": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "email": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "fax": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "mobile": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "name": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "npi": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "phone": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "specialty": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "state": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "zip": {
+                                    "required": false,
+                                    "type": "string"
+                                 }
+                              },
+                              "required": false,
+                              "type": "object"
+                           },
+                           "admit_date": {
+                              "format": "date-time",
+                              "required": true,
+                              "type": "string"
+                           },
+                           "discharge_date": {
+                              "format": "date-time",
+                              "required": false,
+                              "type": "string"
+                           },
+                           "admitting_physician_name": {
+                              "required": true,
+                              "type": "string"
+                           },
+                           "admitting_physician_npi": {
+                              "required": true,
+                              "type": "string"
+                           },
+                           "admitting_physician_username": {
+                              "required": true,
+                              "type": "string"
+                           },
+                           "last_updated": {
+                              "format": "date-time",
+                              "required": true,
+                              "type": "string"
+                           },
+                           "last_updated_user": {
+                              "required": true,
+                              "type": "string"
+                           },
+                           "mrn": {
+                              "required": false,
+                              "type": "string"
+                           },
+                           "room": {
+                              "required": false,
+                              "type": "string"
+                           }
+                        },
+                        "type": "object"
+                     },
+                     "required": true,
+                     "type": "array"
+                  },
+                  "current_page": {
+                     "minimum": 0,
+                     "required": true,
+                     "type": "integer"
+                  },
+                  "sync_request_user": {
+                     "required": false,
+                     "type": "string"
+                  },
+                  "sync_request_user_sip_uri": {
+                     "required": false,
+                     "type": "string"
+                  },
+                  "total_charges": {
+                     "minimum": 0,
+                     "required": true,
+                     "type": "integer"
+                  },
+                  "total_pages": {
+                     "minimum": 0,
+                     "required": true,
+                     "type": "integer"
+                  },
+                  "transaction_id": {
+                     "required": true,
+                     "type": "string"
+                  }
+               },
+               "required": true,
+               "type": "object"
+            },
+            "Subject": {
+               "pattern": "charges",
+               "required": true,
+               "type": "string"
+            },
+            "Type": {
+               "pattern": "a2a",
+               "required": true,
+               "type": "string"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

@@ -1,0 +1,13 @@
+[submodule "deps/rapidjson"]
+	path = deps/rapidjson
+	url = https://github.com/miloyip/rapidjson.git
+	ignore = dirty
+[submodule "deps/Optional"]
+	path = deps/Optional
+	url = https://github.com/akrzemi1/Optional.git
+[submodule "deps/json"]
+	path = deps/json
+	url = https://github.com/nlohmann/json.git
+[submodule "deps/json11"]
+	path = deps/json11
+	url = https://github.com/dropbox/json11.git

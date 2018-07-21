@@ -1,0 +1,1 @@
+ALTER TABLE contactlist ADD COLUMN qliq_id TEXT;

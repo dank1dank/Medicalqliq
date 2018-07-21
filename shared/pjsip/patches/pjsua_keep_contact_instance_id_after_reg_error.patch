@@ -1,0 +1,18 @@
+diff -rupN pjproject-2.1.0-org/pjsip/src/pjsua-lib/pjsua_acc.c pjproject-2.1.0-qliq/pjsip/src/pjsua-lib/pjsua_acc.c
+--- pjproject-2.1.0-org/pjsip/src/pjsua-lib/pjsua_acc.c	2013-01-16 08:51:45 +0000
++++ pjproject-2.1.0-qliq/pjsip/src/pjsua-lib/pjsua_acc.c	2013-08-13 12:02:59 +0000
+@@ -1326,8 +1326,13 @@ static void update_regc_contact(pjsua_ac
+        goto done;
+
+     /* Check if outbound has been requested and rejected */
++    /*
++     * qliqSoft: this condition causes pjproject to loose the instance-id information
++     * our server always supports outbound so we ignore this check here.
++     *
+     if (acc->rfc5626_status == OUTBOUND_NA)
+-	goto done;
++    goto done;
++    */
+
+     if (pj_stristr(&acc->contact, &tcp_param)==NULL &&
+        pj_stristr(&acc->contact, &tls_param)==NULL)

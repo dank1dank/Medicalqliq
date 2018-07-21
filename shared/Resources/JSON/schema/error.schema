@@ -1,0 +1,10 @@
+{
+    "description": "A generic error message",
+    "properties": {
+        "Error": {
+            "required": true,
+            "type": "string"
+        }
+    },
+    "type": "object"
+}

@@ -1,0 +1,37 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Data": {
+               "properties": {
+                  "password": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "platform": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "public_key": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "username": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "uuid": {
+                     "required": true,
+                     "type": "string"
+                  }
+               },
+               "required": true,
+               "type": "object"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

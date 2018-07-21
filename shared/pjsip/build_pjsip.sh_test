@@ -1,0 +1,81 @@
+# Common environment for simulator and device
+
+#BUILDS="device sim"
+BUILDS="device"
+#BUILDS="sim"
+
+export PROJECTS_DIR=${HOME}/projects
+export QLIQPROJECT_DIR=${PROJECTS_DIR}/qliqiphone
+export PJPROJECT_DIR=${PROJECTS_DIR}/pjproject-2.2.1-qliq
+DEVELOPER=`xcode-select -print-path`
+
+export PJCONFIG_FILE=${PJPROJECT_DIR}/pjlib/include/pj/config_site.h
+echo "#define PJ_GETHOSTIP_DISABLE_LOCAL_RESOLUTION 1" > ${PJCONFIG_FILE}
+echo "#define PJSIP_TRANSPORT_IDLE_TIME 720" >> ${PJCONFIG_FILE}
+echo "#define PJSIP_MAX_PKT_LEN 32768" >> ${PJCONFIG_FILE}
+echo "#define PJSIP_TLS_KEEP_ALIVE_INTERVAL 0" >> ${PJCONFIG_FILE}
+echo "#define PJ_CONFIG_IPHONE 1" >> ${PJCONFIG_FILE}
+echo "#include <pj/config_site_sample.h>" >> ${PJCONFIG_FILE}
+cd ${PJPROJECT_DIR}
+mkdir -p ${PJPROJECT_DIR}/build
+
+export OPENSSL=${QLIQPROJECT_DIR}/shared/openssl
+export HOST="arm-apple-darwin10"
+
+for BUILD in ${BUILDS}
+do
+
+  if [ "${BUILD}" == "device" ];
+  then
+
+    #Build configuration for device (7, 7s)
+    export IPHONESDK="iPhoneOS7.1.sdk"
+    export DEVPATH=${DEVELOPER}/Platforms/iPhoneOS.platform/Developer
+    #export CC=`xcrun -find -sdk iphoneos clang`
+
+    find . -name ".*.depend" -exec rm {} \; -print
+    # Build for device (arm 7)
+    export DESTDIR="${PJPROJECT_DIR}/build/pjsip-ios-armv7"
+    mkdir -p ${DESTDIR}
+    ARM7DEST=${DESTDIR}
+    export CFLAGS="-O2 -Wno-unused-label -I${OPENSSL}/include -arch armv7"
+    export LDFLAGS="-L${OPENSSL}/lib -arch armv7"
+    echo "-----------------------  Configuring for ARM 7 -------------------------"
+    ./configure-iphone --prefix='' --with-ssl=${OPENSSL}
+    echo "----------------------  Making for ARM 7 -----------------------------"
+    make dep && make clean && make && make install
+  fi
+
+  if [ "${BUILD}" == "sim" ];
+  then
+
+    # Build for simulator
+    export PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
+    find . -name ".*.depend" -exec rm {} \; -print
+    export IPHONESDK="iPhoneSimulator7.1.sdk"
+    export CFLAGS="-O2 -miphoneos-version-min=4.0 -I${OPENSSL}/include -arch i386"
+    export LDFLAGS="-O2 -miphoneos-version-min=4.0  -L${OPENSSL}/lib -arch i386"
+    export DEVPATH=${DEVELOPER}/Platforms/iPhoneSimulator.platform/Developer
+    export CC=`xcrun -find -sdk iphonesimulator clang`
+    export DESTDIR="${PJPROJECT_DIR}/build/pjsip-iphonesimulator"
+    SIMDEST=${DESTDIR}
+    echo "----------------- Configuring for iPhone Simulator --------------------"
+    ./configure-iphone --prefix=''
+    echo "----------------- Making for iPhone Simulator  ------------------------"
+    make dep && make clean && make && make install
+
+    export DESTDIR=${QLIQPROJECT_DIR}/shared/pjsip/pjsip-iphonesimulator
+
+    mkdir -p ${DESTDIR}/lib
+    echo "Copying Lib files to ${DESTDIR}/lib"
+    cp ${SIMDEST}/lib/*.a ${DESTDIR}/lib
+
+    mkdir -p ${DESTDIR}/include
+    echo "Copying include files to ${DESTDIR}/include"
+    cp -R ${SIMDEST}/include ${DESTDIR}
+
+    rm -rf ${SIMDEST}
+  fi
+done
+
+cd ${QLIQIPHONE_DIR}

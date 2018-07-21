@@ -1,0 +1,271 @@
+ Indenting
+=========
+Use 4 spaces for indenting always.
+
+
+Naming
+======
+Standard Objective-C naming conventions: https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html
+In short:
+Class names and C functions: CamelCaseFirstUpper.
+All other: camelCaseFirstLower.
+
+
+Enum naming
+===========
+Prefix all enum values with enum name.
+Right:
+typedef enum {
+	ColorRed,
+	ColorGreen,
+	ColorBlue
+} Color;
+Wrong:
+typedef enum {
+	RedColor,
+	GreenColor,
+	BlueColor
+} Color;
+typedef enum {
+	Red,
+	Green,
+	Blue
+} Color;
+
+
+Module-related naming
+=====================
+If a set of classes/global functions/constants belongs to some module, prefer to prepend names with module prefix.
+Right:
+Class names in module UIKit: UIView, UIButton, UILabel.
+Wrong:
+Class names in module UIKit: View, Button, Label.
+
+
+Macro definitions
+=================
+For macros which define constants use Apple-style camel-case with first 'k' letter.
+Right:
+#define kMagicConstant 10.0f
+static const CGFloat kMagicConstant = 10.0f;
+Wrong:
+#define MAGIC_CONSTANT 10.0f
+#define magicConstant 10.0f
+
+For function-like macros use upper case and underscores for naming macroses which behave like a function.
+Right:
+#define DO_SOMETHING(x) (x + 1)
+Wrong:
+#define DoSomething(x) (x + 1)
+
+
+Method Declarations and Definitions
+===================================
+Use space between the -/+, return type, and function name.
+Right:
+- (void) doSomethingWithString:(NSString *)string;
+Wrong:
+-(void)doSomethingWithString:(NSString *)string;
+
+Use space between type name and asterisk.
+Right:
+- (void) foo:(NSString *)string;
+Wrong:
+- (void) foo:(NSString*)string;
+
+
+Method Invocations
+==================
+No space between colon and arguments.
+Right:
+[myObject doFooWith:arg1 name:arg2 error:arg3];
+Wrong:
+[myObject doFooWith: arg1 name: arg2 error: arg3];
+
+
+@property definition spacing
+============================
+Use spaces between @property, property attributes, and property type.
+Right:
+@property (nonatomic, strong) id userInfo;
+Wrong:
+@property(nonatomic, strong)id userInfo;
+
+
+If/while/for statements
+=======================
+Always surround parentheses with spaces. If opening curly brace is on the same line as if/while/for statement, there should be space between closing parenthesis and opening curly brace.
+Right:
+if (condition) {
+Wrong:
+if(condition){
+Wrong:
+if (condition){
+
+
+@interface/@implementation/@protocol statements
+===============================================
+If opening curly brace is on the same line as @interface/@implementation/@protocol statement, there should be space between last identifier on line and opening curly brace.
+Right:
+@implementation MyClass {
+Wrong:
+@implementation MyClass{
+Wrong:
+
+
+Dot Notation vs method calls
+============================
+If a class has property, always use it with dot notation instead of calling method.
+Right:
+view.frame = ...;
+Wrong:
+[view setFrame:...];
+
+
+Comma
+=====
+Always place space after comma anywhere in program.
+Right:
+NSLog(@"a", b, c, d)
+Wrong:
+NSLog(@"a",b,c,d)
+
+
+Objective-C literals
+====================
+Use Objective-C literals whenever possible: http://clang.llvm.org/docs/ObjectiveCLiterals.html
+Right:
+NSArray *array;
+id object = array[i];
+Wrong:
+id object = [array objectAtIndex:i];
+
+
+Properties and @synthesize
+==========================
+Since modern Xcode automatically synthesize properties, don't write @synthesize in .m file,
+so you'll use automatically synthesized variable, with first '_' symbol.
+Right:
+.h
+@property (nonatomic, strong) NSString *string;
+.m
+- (void) someMethod {
+    _string = @"...";
+}
+Wrong:
+.m
+@synthesize string;
+- (void) someMethod {
+    string = @"...";
+}
+
+
+'*' symbol
+==========
+Place '*' with pointer variable together.
+Right:
+void *pointer;
+Wrong:
+void * pointer;
+void* pointer;
+
+
+Commentary style
+================
+Use scope comments syntax for documentation and for descriptions,
+Use line comments syntax to disable debugging code, work notes, TODOs and FIXME
+Example:
+/* This well-known method do ..., returns ... */
+- (int) calculateMagicValues;
+
+- (int) calculateMagicValues {
+
+  /* Prepare values*/
+  int result = 0;
+  int a = 2;
+  int b = 2;
+  
+  /* Calculation */
+  int c = Calc(a, b); // <- this function should be faster
+  c *= 2;
+  [self handleResult:&c]; // FIXME: some corner cases cause crash, need debug
+
+  /* Adopt results */
+  //TODO: adopt results for ... 
+  
+// result /= 2.0f;
+// result = abs(result);
+  
+  return result;
+
+}
+
+
+Comment policy
+==============
+Try to write code and name classes, methods and variables in a such way that you do NOT need to comment it.
+If you see that just the code or name of class/method/variable is not enough to understand what it
+does, comment it or fix your code.
+Avoid writing useless comments:
+Right:
+- (int) calculateMagicValue;
+Wrong:
+- (int) calculateMagicValue; // Calculates magic value
+
+
+Code Sections
+=============
+Use directive '#pragma mark' to highlight logical sections of code in class implementation.
+Example:
+
+#pragma mark - UITableViewDelegate methods 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+}
+#pragma mark - NSObject life-cycle
+
+- (id) initWith... {
+
+}
+
+- (void) dealloc {
+
+}
+
+#pragma mark - Observing notifications
+
+- (void) handleNotification:(NSNotification *)notifiction {
+    ....
+}
+
+
+Private varialbes
+=================
+Define private variables inside implementation section.
+Right:
+@implementation Object {
+    NSString *privateString;
+    int privateInt;
+}
+Wrong:
+@interface Object:NSObject {
+    NSString * privateString;
+}
+
+
+Private properties
+==================
+Don't use @properties for private reason when possible.
+
+
+Block variables passing
+=======================
+If a method has block as one of the arguments, block argument should be the last.
+Right:
+- (void) doSomethingWithInterval:(NSTimeInterval)interval repeat:(BOOL)repeat
+  completionBlock:(dispatch_block_t)completionBlock;
+Wrong:
+- (void) doSomethingWithInterval:(NSTimeInterval)interval
+  completionBlock:(dispatch_block_t)completionBlock repeat:(BOOL)repeat;
+  

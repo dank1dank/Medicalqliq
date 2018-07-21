@@ -1,0 +1,56 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Data": {
+               "properties": {
+                  "quick_messages": {
+                     "items": {
+                        "required": true,
+                        "type": "object",
+                           "properties": {
+                              "uuid": {
+                                 "required": true,
+                                 "type": "string"
+                              },
+                              "category": {
+                                 "required": true,
+                                 "type": "string"
+                              },
+                              "message": {
+                                 "required": true,
+                                 "type": "string"
+                              },
+                              "order": {
+                                 "type": "number"
+                              }
+                           }
+                     },
+                     "required": true,
+                     "type": "array"
+                  }
+               },
+               "required": false,
+               "type": "object"
+            },
+            "Error": {
+               "properties": {
+                  "error_code": {
+                     "required": false,
+                     "type": "string"
+                  },
+                  "error_msg": {
+                     "required": true,
+                     "type": "string"
+                  }
+               },
+               "required": false,
+               "type": "object"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

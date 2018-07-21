@@ -1,0 +1,51 @@
+{
+    "properties": {
+        "Message": {
+            "properties": {
+                "Data": {
+                    "properties": {
+                        "name": {
+                            "required": false,
+                            "type": "string"
+                        },
+                        "qliq_id": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "sip_uri": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "private_key": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "public_key": {
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "required": false,
+                    "type": "object"
+                },
+                "Error": {
+                    "properties": {
+                        "error_code": {
+                            "required": false,
+                            "type": "string"
+                        },
+                        "error_msg": {
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "required": false,
+                    "type": "object"
+                }
+            },
+            "required": true,
+            "type": "object"
+        }
+    },
+    "type": "object"
+}

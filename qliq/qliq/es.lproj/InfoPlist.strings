@@ -1,0 +1,5 @@
+/* Localized versions of Info.plist keys */
+"NSCameraUsageDescription" = "Qliq using camera for taking photos and videos.";
+"NSContactsUsageDescription" = "Qliq using contact info for messaging.";
+"NSMicrophoneUsageDescription" = "Qliq using nicrophone for taking audio.";
+"NSPhotoLibraryUsageDescription" = "Qliq using library for taking media from it.";

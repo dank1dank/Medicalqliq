@@ -1,0 +1,49 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Command": {
+               "pattern": "pull_request",
+               "required": true,
+               "type": "string"
+            },
+            "Data": {
+               "properties": {
+                  "last_updated": {
+                     "format": "date-time",
+                     "required": true,
+                     "type": "string"
+                  },
+                  "sync_request_user": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "sync_request_user_sip_uri": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "transaction_id": {
+                     "required": true,
+                     "type": "string"
+                  }
+               },
+               "required": true,
+               "type": "object"
+            },
+            "Subject": {
+               "pattern": "charges",
+               "required": true,
+               "type": "string"
+            },
+            "Type": {
+               "pattern": "a2a",
+               "required": true,
+               "type": "string"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

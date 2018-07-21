@@ -1,0 +1,1 @@
+UPDATE message SET delivery_status = 200 WHERE (received_at != NULL OR received_at != 0) AND (delivery_status = 0);

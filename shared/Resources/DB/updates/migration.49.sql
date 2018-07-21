@@ -1,0 +1,1 @@
+ALTER TABLE mediafiles ADD COLUMN timestamp DOUBLE;

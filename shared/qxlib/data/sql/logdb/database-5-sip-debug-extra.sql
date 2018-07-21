@@ -1,0 +1,1 @@
+ALTER TABLE sip_log ADD COLUMN debug_extra TEXT;

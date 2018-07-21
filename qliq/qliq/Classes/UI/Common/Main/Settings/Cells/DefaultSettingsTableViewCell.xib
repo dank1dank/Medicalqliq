@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsTableViewCell_ID" id="qJW-gC-mxY" customClass="DefaultSettingsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qJW-gC-mxY" id="Ed7-mC-2d6">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nza-it-7nN">
+                        <rect key="frame" x="15" y="0.0" width="272" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="133" id="WaU-bW-kTU"/>
+                            <constraint firstAttribute="height" constant="27" id="ieT-5K-eoR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.37412958559999998" green="0.37412958559999998" blue="0.37412958559999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ieT-5K-eoR"/>
+                                <exclude reference="WaU-bW-kTU"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6s3-14-EiA">
+                        <rect key="frame" x="15" y="0.0" width="272" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="xsy-Vh-Bh7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.37412958559999998" green="0.37412958559999998" blue="0.37412958559999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xsy-Vh-Bh7"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_arrow_blue" translatesAutoresizingMaskIntoConstraints="NO" id="Mub-Zy-oOp" userLabel="ArrowImageView">
+                        <rect key="frame" x="297" y="13" width="13" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="13" id="Npn-AM-NbJ"/>
+                            <constraint firstAttribute="height" constant="17" id="spe-lR-SOY"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nza-it-7nN" firstAttribute="top" secondItem="Ed7-mC-2d6" secondAttribute="top" id="6EF-7p-kMh"/>
+                    <constraint firstItem="6s3-14-EiA" firstAttribute="top" secondItem="Ed7-mC-2d6" secondAttribute="top" id="Grg-aT-0tb"/>
+                    <constraint firstAttribute="trailing" secondItem="Mub-Zy-oOp" secondAttribute="trailing" constant="10" id="IqH-gm-eLY"/>
+                    <constraint firstItem="6s3-14-EiA" firstAttribute="top" secondItem="Ed7-mC-2d6" secondAttribute="top" constant="10" id="J9P-yv-KAY"/>
+                    <constraint firstAttribute="bottom" secondItem="nza-it-7nN" secondAttribute="bottom" id="Jum-fq-jRe"/>
+                    <constraint firstItem="6s3-14-EiA" firstAttribute="leading" secondItem="Ed7-mC-2d6" secondAttribute="leading" constant="15" id="Mgr-pZ-3IA"/>
+                    <constraint firstItem="Mub-Zy-oOp" firstAttribute="leading" secondItem="6s3-14-EiA" secondAttribute="trailing" constant="10" id="W4D-wA-XUH"/>
+                    <constraint firstItem="6s3-14-EiA" firstAttribute="leading" secondItem="nza-it-7nN" secondAttribute="trailing" constant="8" id="YLJ-wt-95s"/>
+                    <constraint firstItem="Mub-Zy-oOp" firstAttribute="leading" secondItem="nza-it-7nN" secondAttribute="trailing" constant="10" id="d4w-R0-F2f"/>
+                    <constraint firstItem="Mub-Zy-oOp" firstAttribute="top" secondItem="Ed7-mC-2d6" secondAttribute="top" constant="15" id="f68-K4-Vr5"/>
+                    <constraint firstItem="nza-it-7nN" firstAttribute="leading" secondItem="Ed7-mC-2d6" secondAttribute="leading" constant="15" id="l3L-ar-c6a"/>
+                    <constraint firstItem="Mub-Zy-oOp" firstAttribute="centerY" secondItem="Ed7-mC-2d6" secondAttribute="centerY" id="opA-2a-2UN"/>
+                    <constraint firstAttribute="bottom" secondItem="6s3-14-EiA" secondAttribute="bottom" id="xJM-q1-0Ch"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="J9P-yv-KAY"/>
+                        <exclude reference="YLJ-wt-95s"/>
+                        <exclude reference="f68-K4-Vr5"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="arrowImageView" destination="Mub-Zy-oOp" id="QeD-1B-rHc"/>
+                <outlet property="descriptionLabel" destination="6s3-14-EiA" id="3J1-nM-Um7"/>
+                <outlet property="titleLabel" destination="nza-it-7nN" id="pPo-4S-YYZ"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cell_arrow_blue" width="24" height="44"/>
+    </resources>
+</document>

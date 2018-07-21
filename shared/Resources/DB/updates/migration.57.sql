@@ -1,0 +1,1 @@
+ALTER TABLE conversation ADD COLUMN is_muted INTEGER DEFAULT 0;

@@ -1,0 +1,31 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Command": {
+               "required": true,
+               "type": "string"
+            },
+            "Data": {
+               "required": true,
+               "type": "any"
+            },
+            "Subject": {
+               "required": true,
+               "type": "string"
+            },
+            "Type": {
+               "required": true,
+               "type": "string"
+            },
+            "Signature": {
+               "required": false,
+               "type": "string"
+            }           
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

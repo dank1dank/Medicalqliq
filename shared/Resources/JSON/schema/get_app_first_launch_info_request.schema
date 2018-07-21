@@ -1,0 +1,30 @@
+{
+    "properties": {
+        "Message": {
+            "properties": {
+                    "Data": {
+                    "properties": {
+                        "app_name": {
+                            "required": false,
+                            "type": "string"
+                        },
+                    "app_version": {
+                        "required": false,
+                        "type": "string"
+                    },
+                    "app_platform": {
+                        "required": true,
+                        "type": "string"
+                    }
+            },
+        "required": true,
+                    "type": "object"
+                }
+},
+"required": true,
+"type": "object"
+}
+},
+"type": "object"
+}
+

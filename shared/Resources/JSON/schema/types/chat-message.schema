@@ -1,0 +1,75 @@
+{
+   "id": "chat-message",
+   "properties": {
+      "fromUserId": {
+         "required": true,
+         "type": "string"
+      },
+      "toUserId": {
+         "required": true,
+         "type": "string"
+      },
+      "text": {
+         "required": true,
+         "type": "string"
+      },
+      "subject": {
+         "required": false,
+         "type": "string"
+      },
+      "uuid": {
+         "required": true,
+         "type": "string"
+      },
+      "requiresAck": {
+         "required": false,
+         "type": "boolean"
+      },
+      "createdAt": {
+         "format": "date-time",
+         "required": false,
+         "type": "string"
+      },
+      "lastSentAt": {
+         "format": "date-time",
+         "required": false,
+         "type": "string"
+      },
+      "sentFromDevice": {
+         "required": false,
+         "type": "string"
+      },
+      "deliveryStatus": {
+         "required": false,
+         "type": "string"
+      },
+      "failedAttempts": {
+         "required": false,
+         "type": "integer"
+      },
+      "receivedOnDevice": {
+         "required": false,
+         "type": "string"
+      },
+      "receivedAt": {
+         "format": "date-time",
+         "required": false,
+         "type": "string"
+      },
+      "readAt": {
+         "required": false,
+         "type": "boolean"
+      },      
+      "ackReceivedAt": {
+         "format": "date-time",
+         "required": false,
+         "type": "string"
+      },
+      "ackSentAt": {
+         "format": "date-time",
+         "required": false,
+         "type": "string"
+      }
+   },
+   "type": "object"
+}

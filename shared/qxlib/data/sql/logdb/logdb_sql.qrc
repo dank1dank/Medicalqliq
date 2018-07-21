@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/sql/logdb">
+        <file>database-1-sip-log.sql</file>
+        <file>database-2-web-log.sql</file>
+        <file>database-3-cn-log.sql</file>
+        <file>database-4-web-log-module.sql</file>
+	<file>database-5-sip-debug-extra.sql</file>
+	<file>database-6-timestamp-index.sql</file>
+	<file>database-7-web-log-indices.sql</file>
+	<file>database-8-push-notification-log.sql</file>
+    </qresource>
+</RCC>

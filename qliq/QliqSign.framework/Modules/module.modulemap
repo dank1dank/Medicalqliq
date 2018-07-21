@@ -1,0 +1,6 @@
+framework module QliqSign {
+  umbrella header "QliqSign.h"
+
+  export *
+  module * { export * }
+}

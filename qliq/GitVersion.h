@@ -1,0 +1,4 @@
+#define HAS_GIT_INFO 1
+#define GIT_BRANCH @"RC4"
+#define GIT_COMMIT_NUMBER @"3119"
+#define GIT_COMMIT_HASH_SHORT @"9a8b0f3"

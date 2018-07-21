@@ -1,0 +1,662 @@
+aconfigure: WARNING: if you wanted to set the --build type, don't use --host.
+    If a cross compiler is detected then cross compile mode will be used
+../src/pj/os_timestamp_posix.c:128:9: warning: 'NSEC_PER_SEC' macro redefined
+#define NSEC_PER_SEC    1000000000
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/include/mach/clock_types.h:86:9: note: previous definition is here
+#define NSEC_PER_SEC    1000000000ull   /* nanoseconds per second */
+        ^
+1 warning generated.
+In file included from ../src/pj/ioqueue_select.c:137:
+../src/pj/ioqueue_common_abs.c:500:19: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+        if ((read_op->op == PJ_IOQUEUE_OP_RECV_FROM)) {
+             ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/pj/ioqueue_common_abs.c:500:19: note: remove extraneous parentheses around the comparison to silence this warning
+        if ((read_op->op == PJ_IOQUEUE_OP_RECV_FROM)) {
+            ~            ^                         ~
+../src/pj/ioqueue_common_abs.c:500:19: note: use '=' to turn this equality comparison into an assignment
+        if ((read_op->op == PJ_IOQUEUE_OP_RECV_FROM)) {
+                         ^~
+                         =
+../src/pj/ioqueue_common_abs.c:506:26: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+        } else if ((read_op->op == PJ_IOQUEUE_OP_RECV)) {
+                    ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+../src/pj/ioqueue_common_abs.c:506:26: note: remove extraneous parentheses around the comparison to silence this warning
+        } else if ((read_op->op == PJ_IOQUEUE_OP_RECV)) {
+                   ~            ^                    ~
+../src/pj/ioqueue_common_abs.c:506:26: note: use '=' to turn this equality comparison into an assignment
+        } else if ((read_op->op == PJ_IOQUEUE_OP_RECV)) {
+                                ^~
+                                =
+2 warnings generated.
+../src/pj/os_timestamp_posix.c:128:9: warning: 'NSEC_PER_SEC' macro redefined
+#define NSEC_PER_SEC    1000000000
+        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/include/mach/clock_types.h:86:9: note: previous definition is here
+#define NSEC_PER_SEC    1000000000ull   /* nanoseconds per second */
+        ^
+1 warning generated.
+../src/pj/pool.c:146:4: warning: explicitly assigning a variable of type 'void *' to itself [-Wself-assign]
+        p = p;
+        ~ ^ ~
+1 warning generated.
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjlib-arm-apple-darwin9/pool_dbg.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjlib-arm-apple-darwin9/ssl_sock_ossl.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjlib-arm-apple-darwin9/ssl_sock_dump.o has no symbols
+../src/pjlib-test/exception.c:123:12: warning: explicitly assigning a variable of type 'int' to itself [-Wself-assign]
+        rc = rc;
+        ~~ ^ ~~
+1 warning generated.
+../src/pjnath/ice_strans.c:854:39: warning: comparison of unsigned expression >= 0 is always true [-Wtautological-compare]
+    if (ice_st->comp[0]->default_cand >= 0 &&
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~
+1 warning generated.
+../src/pjnath/stun_auth.c:152:24: warning: unused function 'GET_VAL16' [-Wunused-function]
+PJ_INLINE(pj_uint16_t) GET_VAL16(const pj_uint8_t *pdu, unsigned pos)
+                       ^
+1 warning generated.
+../src/pjnath/stun_msg.c:755:24: warning: unused function 'GETVAL16N' [-Wunused-function]
+PJ_INLINE(pj_uint16_t) GETVAL16N(const pj_uint8_t *buf, unsigned pos)
+                       ^
+../src/pjnath/stun_msg.c:774:24: warning: unused function 'GETVAL32N' [-Wunused-function]
+PJ_INLINE(pj_uint32_t) GETVAL32N(const pj_uint8_t *buf, unsigned pos)
+                       ^
+2 warnings generated.
+../../gsm/src/gsm_create.c:7:19: warning: unused variable 'ident' [-Wunused-const-variable]
+static char const       ident[] = "$Header: /tmp_amd/presto/export/kbs/jutta/src/gsm/RCS/gsm_create.c,v 1.4 1996/07/02 09:59:05 jutta Exp $";
+                        ^
+1 warning generated.
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-audiodev-arm-apple-darwin9/legacy_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-audiodev-arm-apple-darwin9/null_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-audiodev-arm-apple-darwin9/pa_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-audiodev-arm-apple-darwin9/wmme_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-audiodev-arm-apple-darwin9/alsa_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-audiodev-arm-apple-darwin9/bb10_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-audiodev-arm-apple-darwin9/bdimad_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-audiodev-arm-apple-darwin9/android_jni_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-audiodev-arm-apple-darwin9/opensl_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-videodev-arm-apple-darwin9/ios_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-videodev-arm-apple-darwin9/sdl_dev_m.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-videodev-arm-apple-darwin9/errno.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-videodev-arm-apple-darwin9/videodev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-videodev-arm-apple-darwin9/avi_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-videodev-arm-apple-darwin9/ffmpeg_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-videodev-arm-apple-darwin9/colorbar_dev.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-videodev-arm-apple-darwin9/v4l2_dev.o has no symbols
+warning: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: warning for library: ../lib/libpjmedia-videodev-arm-apple-darwin9.a the table of contents is empty (no object file members in the library define global symbols)
+../src/pjmedia/endpoint.c:37:23: warning: unused variable 'STR_AUDIO' [-Wunused-const-variable]
+static const pj_str_t STR_AUDIO = { "audio", 5};
+                      ^
+../src/pjmedia/endpoint.c:38:23: warning: unused variable 'STR_VIDEO' [-Wunused-const-variable]
+static const pj_str_t STR_VIDEO = { "video", 5};
+                      ^
+2 warnings generated.
+../src/pjmedia/sdp_neg.c:87:15: warning: comparison of unsigned enum expression >= 0 is always true [-Wtautological-compare]
+    if (state >=0 && state < (pjmedia_sdp_neg_state)PJ_ARRAY_SIZE(state_str))
+        ~~~~~ ^ ~
+1 warning generated.
+../src/pjmedia/session.c:52:23: warning: unused variable 'ID_AUDIO' [-Wunused-const-variable]
+static const pj_str_t ID_AUDIO = { "audio", 5};
+                      ^
+../src/pjmedia/session.c:53:23: warning: unused variable 'ID_VIDEO' [-Wunused-const-variable]
+static const pj_str_t ID_VIDEO = { "video", 5};
+                      ^
+../src/pjmedia/session.c:54:23: warning: unused variable 'ID_APPLICATION' [-Wunused-const-variable]
+static const pj_str_t ID_APPLICATION = { "application", 11};
+                      ^
+../src/pjmedia/session.c:55:23: warning: unused variable 'ID_IN' [-Wunused-const-variable]
+static const pj_str_t ID_IN = { "IN", 2 };
+                      ^
+../src/pjmedia/session.c:56:23: warning: unused variable 'ID_IP4' [-Wunused-const-variable]
+static const pj_str_t ID_IP4 = { "IP4", 3};
+                      ^
+../src/pjmedia/session.c:57:23: warning: unused variable 'ID_IP6' [-Wunused-const-variable]
+static const pj_str_t ID_IP6 = { "IP6", 3};
+                      ^
+../src/pjmedia/session.c:58:23: warning: unused variable 'ID_RTP_AVP' [-Wunused-const-variable]
+static const pj_str_t ID_RTP_AVP = { "RTP/AVP", 7 };
+                      ^
+../src/pjmedia/session.c:59:23: warning: unused variable 'ID_RTP_SAVP' [-Wunused-const-variable]
+static const pj_str_t ID_RTP_SAVP = { "RTP/SAVP", 8 };
+                      ^
+../src/pjmedia/session.c:61:23: warning: unused variable 'ID_RTPMAP' [-Wunused-const-variable]
+static const pj_str_t ID_RTPMAP = { "rtpmap", 6 };
+                      ^
+../src/pjmedia/session.c:62:23: warning: unused variable 'ID_TELEPHONE_EVENT' [-Wunused-const-variable]
+static const pj_str_t ID_TELEPHONE_EVENT = { "telephone-event", 15 };
+                      ^
+../src/pjmedia/session.c:64:23: warning: unused variable 'STR_INACTIVE' [-Wunused-const-variable]
+static const pj_str_t STR_INACTIVE = { "inactive", 8 };
+                      ^
+../src/pjmedia/session.c:65:23: warning: unused variable 'STR_SENDRECV' [-Wunused-const-variable]
+static const pj_str_t STR_SENDRECV = { "sendrecv", 8 };
+                      ^
+../src/pjmedia/session.c:66:23: warning: unused variable 'STR_SENDONLY' [-Wunused-const-variable]
+static const pj_str_t STR_SENDONLY = { "sendonly", 8 };
+                      ^
+../src/pjmedia/session.c:67:23: warning: unused variable 'STR_RECVONLY' [-Wunused-const-variable]
+static const pj_str_t STR_RECVONLY = { "recvonly", 8 };
+                      ^
+14 warnings generated.
+../src/pjmedia/stream_info.c:36:23: warning: unused variable 'STR_SENDRECV' [-Wunused-const-variable]
+static const pj_str_t STR_SENDRECV = { "sendrecv", 8 };
+                      ^
+1 warning generated.
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/echo_speex.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/alaw_ulaw.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/avi_player.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/conf_switch.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/converter_libswscale.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/ffmpeg_util.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/rtcp_xr.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/vid_codec.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/vid_codec_util.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/vid_port.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/vid_stream.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/vid_stream_info.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-arm-apple-darwin9/vid_tee.o has no symbols
+../src/pjmedia-codec/speex_codec.c:807:18: warning: comparison of unsigned expression < 0 is always false [-Wtautological-compare]
+            if (advance < 0) {
+                ~~~~~~~ ^ ~
+1 warning generated.
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/ffmpeg_vid_codecs.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/h263_packetizer.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/h264_packetizer.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/ipp_codecs.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/opencore_amr.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/silk.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/l16.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/g722.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/g722/g722_enc.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/g722/g722_dec.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjmedia-codec-arm-apple-darwin9/g7221.o has no symbols
+../src/pjmedia/sdp_neg.c:87:15: warning: comparison of unsigned enum expression >= 0 is always true [-Wtautological-compare]
+    if (state >=0 && state < (pjmedia_sdp_neg_state)PJ_ARRAY_SIZE(state_str))
+        ~~~~~ ^ ~
+1 warning generated.
+../src/pjsip/sip_transport_udp.c:176:21: warning: comparison of unsigned expression < 0 is always false [-Wtautological-compare]
+            if (size_eaten < 0) {
+                ~~~~~~~~~~ ^ ~
+1 warning generated.
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjsip-arm-apple-darwin9/sip_transport_tls.o has no symbols
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/../../../Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: output/pjsip-arm-apple-darwin9/sip_auth_aka.o has no symbols
+../src/pjsip-ua/sip_reg.c:216:28: warning: comparison of unsigned expression < 0 is always false [-Wtautological-compare]
+    else if (regc->expires < 0)
+             ~~~~~~~~~~~~~ ^ ~
+1 warning generated.
+../src/pjsip-ua/sip_xfer.c:82:23: warning: unused variable 'STR_SIPFRAG_VERSION' [-Wunused-const-variable]
+static const pj_str_t STR_SIPFRAG_VERSION = {";version=2.0", 12 };
+                      ^
+1 warning generated.
+../src/pjsua-lib/pjsua_acc.c:2470:58: error: use of undeclared identifier 'reg_info'
+        pjsip_regc_get_info(pjsua_var.acc[acc_id].regc, &reg_info);
+                                                         ^
+../src/pjsua-lib/pjsua_acc.c:2471:13: error: use of undeclared identifier 'reg_info'
+        if (reg_info.is_busy)
+            ^
+2 errors generated.
+make[2]: *** [output/pjsua-lib-arm-apple-darwin9/pjsua_acc.o] Error 1
+make[1]: *** [libpjsua-arm-apple-darwin9.a] Error 2
+make: *** [all] Error 1
+aconfigure: WARNING: if you wanted to set the --build type, don't use --host.
+    If a cross compiler is detected then cross compile mode will be used
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+clang: error: cannot use 'dependencies' output with multiple -arch options
+.pjlib-arm-apple-darwin9.depend:1: *** missing separator.  Stop.
+make[1]: *** [clean] Error 2
+make: *** [clean] Error 1
+fatal error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo: can't open input file: /Users/krishna/projects/pjproject-2.2.1-qliq/build/pjsip-ios-armv7/lib/*.a (No such file or directory)
+cp: /Users/krishna/projects/pjproject-2.2.1-qliq/build/pjsip-ios-armv7/include: No such file or directory

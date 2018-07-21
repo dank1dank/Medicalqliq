@@ -1,0 +1,86 @@
+diff -crB pjproject-2.0.1-org/pjsip/include/pjsua-lib/pjsua.h pjproject-2.0.1-qliq/pjsip/include/pjsua-lib/pjsua.h
+*** pjproject-2.0.1-org/pjsip/include/pjsua-lib/pjsua.h	Tue Jun 26 10:37:41 2012
+--- pjproject-2.0.1-qliq/pjsip/include/pjsua-lib/pjsua.h	Thu Feb  7 13:43:59 2013
+***************
+*** 4913,4918 ****
+--- 4913,4925 ----
+  				   const pjsua_msg_data *msg_data,
+  				   void *user_data);
+  
++ PJ_DECL(pj_status_t) pjsua_im_send_with_call_id(pjsua_acc_id acc_id, 
++ 				   const pj_str_t *to,
++ 				   const pj_str_t *mime_type,
++ 				   const pj_str_t *content,
++ 				   const pjsua_msg_data *msg_data,
++ 				   void *user_data,
++ 				   const pj_str_t *call_id);
+  
+  /**
+   * Send typing indication outside dialog.
+diff -crB pjproject-2.0.1-org/pjsip/src/pjsua-lib/pjsua_im.c pjproject-2.0.1-qliq/pjsip/src/pjsua-lib/pjsua_im.c
+*** pjproject-2.0.1-org/pjsip/src/pjsua-lib/pjsua_im.c	Wed Jun 20 11:39:05 2012
+--- pjproject-2.0.1-qliq/pjsip/src/pjsua-lib/pjsua_im.c	Thu Feb  7 13:48:50 2013
+***************
+*** 503,514 ****
+   * Send instant messaging outside dialog, using the specified account for
+   * route set and authentication.
+   */
+! PJ_DEF(pj_status_t) pjsua_im_send( pjsua_acc_id acc_id, 
+  				   const pj_str_t *to,
+  				   const pj_str_t *mime_type,
+  				   const pj_str_t *content,
+  				   const pjsua_msg_data *msg_data,
+! 				   void *user_data)
+  {
+      pjsip_tx_data *tdata;
+      const pj_str_t mime_text_plain = pj_str("text/plain");
+--- 503,515 ----
+   * Send instant messaging outside dialog, using the specified account for
+   * route set and authentication.
+   */
+! PJ_DEF(pj_status_t) pjsua_im_send_with_call_id( pjsua_acc_id acc_id, 
+  				   const pj_str_t *to,
+  				   const pj_str_t *mime_type,
+  				   const pj_str_t *content,
+  				   const pjsua_msg_data *msg_data,
+! 				   void *user_data,
+! 				   const pj_str_t *call_id)
+  {
+      pjsip_tx_data *tdata;
+      const pj_str_t mime_text_plain = pj_str("text/plain");
+***************
+*** 528,534 ****
+      status = pjsip_endpt_create_request(pjsua_var.endpt, 
+  					&pjsip_message_method, to, 
+  					&acc->cfg.id,
+! 					to, NULL, NULL, -1, NULL, &tdata);
+      if (status != PJ_SUCCESS) {
+  	pjsua_perror(THIS_FILE, "Unable to create request", status);
+  	return status;
+--- 529,535 ----
+      status = pjsip_endpt_create_request(pjsua_var.endpt, 
+  					&pjsip_message_method, to, 
+  					&acc->cfg.id,
+! 					to, NULL, call_id, -1, NULL, &tdata);
+      if (status != PJ_SUCCESS) {
+  	pjsua_perror(THIS_FILE, "Unable to create request", status);
+  	return status;
+***************
+*** 618,623 ****
+--- 619,634 ----
+      return PJ_SUCCESS;
+  }
+  
++ PJ_DEF(pj_status_t) pjsua_im_send( pjsua_acc_id acc_id, 
++ 				   const pj_str_t *to,
++ 				   const pj_str_t *mime_type,
++ 				   const pj_str_t *content,
++ 				   const pjsua_msg_data *msg_data,
++ 				   void *user_data)
++ {
++ 	return pjsua_im_send_with_call_id(acc_id, to, mime_type,
++ 		content, msg_data, user_data, NULL);
++ }
+  
+  /*
+   * Send typing indication outside dialog.

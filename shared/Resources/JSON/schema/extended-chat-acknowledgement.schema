@@ -1,0 +1,37 @@
+{
+   "description": "An instant message",
+   "properties": {
+      "Message": {
+         "properties": {
+            "Command": {
+               "pattern": "im-acknowledgement",
+               "required": true,
+               "type": "string"
+            },
+            "Data": {
+               "required": true,
+               "type": "object",
+                "properties": {
+                  "messageId": {
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+            },
+            "Subject": {
+               "pattern": "text",
+               "required": true,
+               "type": "string"
+            },
+            "Type": {
+               "pattern": "u2u",
+               "required": true,
+               "type": "string"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

@@ -1,0 +1,14 @@
+diff -rupN pjproject-2.3-org/pjsip/src/pjsip/sip_msg.c pjproject-2.3-qliq/pjsip/src/pjsip/sip_msg.c
+--- pjproject-2.3-org/pjsip/src/pjsip/sip_msg.c	2014-05-23 05:24:55.000000000 +0200
++++ pjproject-2.3-qliq/pjsip/src/pjsip/sip_msg.c	2015-05-26 10:59:29.871426131 +0200
+@@ -1219,6 +1219,9 @@ static int pjsip_contact_hdr_print( pjsi
+ 	char *startbuf = buf;
+ 	char *endbuf = buf + size;
+ 
++    if (hdr->uri == NULL)
++        return -1; // Adam Sowa
++
+ 	copy_advance(buf, (*hname));
+ 	*buf++ = ':';
+ 	*buf++ = ' ';
+

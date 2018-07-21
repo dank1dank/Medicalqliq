@@ -1,0 +1,51 @@
+{
+    "properties": {
+        "Message": {
+            "properties": {
+                "Data": {
+                    "properties": {
+                        "invitation_url": {
+                            "required": false,
+                            "type": "string"
+                        },
+                        "receiver_qliq_id": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "receiver_public_key": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "sip_uri": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "connection_state": {
+                            "required": false,
+                            "type": "string"
+                        }
+                    },
+                    "required": false,
+                    "type": "object"
+                },
+                "Error": {
+                    "properties": {
+                        "error_code": {
+                            "required": false,
+                            "type": "string"
+                        },
+                        "error_msg": {
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "required": false,
+                    "type": "object"
+                }
+            },
+            "required": true,
+            "type": "object"
+        }
+    },
+    "type": "object"
+}

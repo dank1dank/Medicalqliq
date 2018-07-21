@@ -1,0 +1,64 @@
+{
+    "properties": {
+        "Message": {
+            "properties": {
+                "Data": {
+                    "properties": {
+                        "username": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "password": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "timestamp": {
+                            "required": true,
+                            "type": "number"
+                        },
+                        "timezone_utc_offset": {
+                            "type": "string"
+                        },
+                        "app_name": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "app_version": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "app_platform": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "device_name": {
+                            "required": false,
+                            "type": "string"
+                        },
+                        "device_uuid": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "os_version": {
+                            "required": false,
+                            "type": "string"
+                        },
+                        "device_muted": {
+                            "required": false,
+                            "type": "boolean"
+                        },
+                        "device_ringer_volume": {
+                            "required": false,
+                            "type": "string"
+                        }
+                    },
+                    "required": true,
+                    "type": "object"
+                }
+            },
+            "required": true,
+            "type": "object"
+        }
+    },
+    "type": "object"
+}

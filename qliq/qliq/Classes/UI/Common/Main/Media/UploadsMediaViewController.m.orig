@@ -1,0 +1,667 @@
+//
+//  UploadsMediaViewController.m
+//  qliq
+//
+//  Created by Valerii Lider on 04/11/2017.
+//
+//
+
+#import "UploadsMediaViewController.h"
+#import "UploadsMediaTableViewCell.h"
+
+//Preview controllers
+#import "DocumentAttachmentViewController.h"
+#import "ImageAttachmentViewController.h"
+#import "AudioAttachmentViewController.h"
+#import "VideoAttachmentViewController.h"
+
+//For testing
+#import "MediaFileService.h"
+#import "MediaFileDBService.h"
+#import "MessageAttachment.h"
+#import "MessageAttachmentDBService.h"
+#import "QliqConnectModule.h"
+#import "ACPDownloadView.h"
+#import "ACPStaticImagesAlternative.h"
+#import "UploadToQliqStorService.h"
+#import "SipContactDBService.h"
+#import "MediaFileUploadDBService.h"
+
+#define kUpdateUploadFiles @"UpdateUploadFiles"
+
+@interface UploadsMediaViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UploadsMediaTableViewCellDelegate, MediaFileUploadObserver>
+
+//IBOutlets
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+//Constraints
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
+
+//Data
+@property (nonatomic, strong) NSMutableArray *mediaFileUploads;
+@property (nonatomic, strong) NSMutableArray *searchingUploadFiles;
+@property (nonatomic, assign) BOOL isSearching;
+
+//Banner View
+@property (nonatomic, strong) UIView *bannerView;
+@property (nonatomic, strong) ACPDownloadView *activityView;
+
+//Uploadind Services
+@property (nonatomic, strong) UploadToQliqStorService *uploadToQliqStorService;
+
+@end
+
+@implementation UploadsMediaViewController
+
+- (void)dealloc {
+
+    [self.bannerView removeFromSuperview];
+    self.bannerView = nil;
+    self.tableView.dataSource = nil;
+    self.tableView.delegate = nil;
+    self.searchBar = nil;
+    self.mediaFileUploads = nil;
+    self.uploadingMediaFile = nil;
+    self.searchingUploadFiles = nil;
+    self.activityView = nil;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self configureDefaultText];
+    [self reloadUploadFiles];
+
+    //TableView
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+
+    //HeaderView
+    // SearchBar
+    {
+        self.searchBar.placeholder = QliqLocalizedString(@"2107-TitleSearch");
+        self.searchBar.delegate = self;
+        self.searchBar.autocorrectionType = UITextAutocorrectionTypeYes;
+        self.searchBar.spellCheckingType = UITextSpellCheckingTypeYes;
+        self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        self.searchBar.keyboardType = UIKeyboardTypeAlphabet;
+        self.isSearching = NO;
+    }
+
+    // Notifications
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUploadFiles:) name:kUpdateUploadFiles object:nil];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appWillEnterForeground:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    
+    [[MediaFileUploadObservable sharedInstance] addObserver:self];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[MediaFileUploadObservable sharedInstance] removeObserver:self];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Private -
+
+- (void)configureDefaultText {
+
+    if (self.uploadToEMR) {
+        self.navigationItem.title = QliqLocalizedString(@"1110-TextUploadToEMR");
+    }
+    else {
+        self.navigationItem.title = QliqLocalizedString(@"1227-TextUploadToQliqStor");
+    }
+    self.navigationController.navigationBarHidden = NO;
+}
+
+- (void)appWillEnterForeground:(NSNotification *)notification {
+    __weak __block typeof(self) welf = self;
+    if ([MediaFileUploadDBService countWithShareType:UploadedToEmrMediaFileUploadShareType] > 0 || welf.uploadingMediaFile != nil) {
+        [welf showUploadingUpdatesView];
+    }
+}
+
+- (void)showUploadingUpdatesView {
+
+    __weak __typeof(self)welf = self;
+    [welf updateBannerFrameForSize:[UIScreen mainScreen].bounds.size];
+    [welf updateActivityView];
+    welf.bannerView.hidden = NO;
+    UILabel *lbl = [welf.bannerView viewWithTag:123];
+
+    NSString *titleUpload = nil;
+    if (welf.uploadToEMR) {
+        titleUpload = QliqLocalizedString(@"2455-TitleEMR");
+    }
+    else {
+        titleUpload = QliqLocalizedString(@"2456-TitleQliqSTOR");
+    }
+    lbl.text = QliqFormatLocalizedString1(@"2453-TitleUploadingTo{UploadingType}", titleUpload);
+    lbl.textColor = [UIColor grayColor];
+}
+
+- (void)dismissUploadingViewWithCompletitionStatus:(CompletitionStatus)complitionStatus {
+
+    __weak __typeof(self)welf = self;
+
+    VoidBlock hiddenUploadingUpdatesView = ^{
+
+        [UIView animateWithDuration:0.15 delay:0.0f
+             usingSpringWithDamping:0.05f
+              initialSpringVelocity:0.1f
+                            options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+                                welf.bannerView.hidden = YES;
+                                //Update Top tableView Constraint
+                                welf.tableViewTopConstraint.constant = 0.f;
+                            } completion:nil];
+    };
+
+    if (complitionStatus == CompletitionStatusError) {
+
+        NSString *titleUpload = nil;
+        if (welf.uploadToEMR) {
+            titleUpload = QliqLocalizedString(@"2455-TitleEMR");
+        }
+        else {
+            titleUpload = QliqLocalizedString(@"2456-TitleQliqSTOR");
+        }
+
+        UILabel *lbl = [welf.bannerView viewWithTag:123];
+        lbl.text = QliqFormatLocalizedString1(@"2454-TitleUploadingTo{UploadingType}Failed", titleUpload);
+        lbl.textColor = [UIColor redColor];
+        lbl.adjustsFontSizeToFitWidth = YES;
+        lbl.numberOfLines = 2.f;
+        welf.tableViewTopConstraint.constant = welf.bannerView.frame.size.height;
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            hiddenUploadingUpdatesView();
+        });
+    }
+    else {
+        hiddenUploadingUpdatesView();
+    }
+}
+
+- (void)updateBannerFrameForSize:(CGSize)size {
+
+    UILabel *lbl = nil;
+    CGFloat height = 35.f;
+    CGFloat maxY = CGRectGetMaxY(self.searchBar.frame);
+
+    if (!self.bannerView) {
+        self.bannerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, maxY, size.width, height)];
+        [self.view addSubview:self.bannerView];
+        lbl = [[UILabel alloc] initWithFrame:self.bannerView.bounds];
+        lbl.tag = 123;
+        lbl.textAlignment = NSTextAlignmentCenter;
+        self.bannerView.backgroundColor = [UIColor whiteColor];
+        [self.bannerView addSubview:lbl];
+    } else {
+        self.bannerView.frame = CGRectMake(0.f, maxY, size.width, height);
+        lbl = [self.bannerView viewWithTag:123];
+        lbl.frame = self.bannerView.bounds;
+    }
+
+    lbl.text = QliqLocalizedString(@"2427-TitleCheckingForUpdates");
+    lbl.textColor = [UIColor grayColor];
+
+    //Update Top tableView Constraint
+    self.tableViewTopConstraint.constant = self.bannerView.frame.size.height;
+}
+
+- (void)updateActivityView {
+
+    if (!self.activityView) {
+        self.activityView = [ACPDownloadView new];
+    }
+    else {
+        [self.activityView setIndicatorStatus:ACPDownloadStatusNone];
+    }
+
+    CGFloat activityViewSize = 28.f;
+    CGFloat positionX = self.bannerView.frame.size.width - activityViewSize - 20.f;
+    CGFloat positionY = (self.bannerView.frame.size.height - activityViewSize)/2;
+    [self.activityView setFrameOriginX:positionX];
+    [self.activityView setFrameOriginY:positionY];
+    [self.activityView setWidth:activityViewSize];
+    [self.activityView setHeight:activityViewSize];
+
+    self.activityView.hidden = NO;
+    self.activityView.backgroundColor = [UIColor clearColor];
+    self.activityView.clearsContextBeforeDrawing = YES;
+    [self.activityView setTintColor:RGBa(24.f, 122.f, 181.f, 0.75)];
+
+
+    ACPStaticImagesAlternative * myOwnImages = [ACPStaticImagesAlternative new];
+    [myOwnImages setStrokeColor:[UIColor whiteColor]];
+    [self.activityView setImages:myOwnImages];
+
+    //Status by default.
+    [self.activityView setIndicatorStatus:ACPDownloadStatusIndeterminate];
+    [self.bannerView addSubview:self.activityView];
+}
+
+- (void)uploadFailedFiles:(UITapGestureRecognizer*)tapGestureRecognizer {
+
+    UIView *failedImage = tapGestureRecognizer.view;
+    if (self.mediaFileUploads.count > failedImage.tag) {
+
+        MediaFileUpload *upload = [self.mediaFileUploads objectAtIndex:failedImage.tag];
+        if ([upload isFailed]) {
+            [self startDownloadOfUploadingFile:upload.mediaFile forCell:nil atIndex:nil];
+        }
+    }
+}
+
+#pragma mark * Data
+
+- (void)reloadUploadFiles {
+
+    // TODO: show uploads based on current type (qliqStor or EMR)
+    if (self.uploadToEMR) {
+        self.mediaFileUploads = [MediaFileUploadDBService getWithShareType:UploadedToEmrMediaFileUploadShareType skip:0 limit:0];
+    }
+    else {
+        self.mediaFileUploads = [MediaFileUploadDBService getWithShareType:UploadedToQliqStorMediaFileUploadShareType skip:0 limit:0];
+    }
+    [self sortUploadsMediaFile:self.mediaFileUploads];
+    
+    if (self.uploadingMediaFile != nil) {
+        [self showUploadingUpdatesView];
+        [self uploadFile:self.uploadingMediaFile];
+        self.uploadingMediaFile = nil;
+    }
+
+    if ([MediaFileUploadDBService countWithShareType:UnknownMediaFileUploadShareType] > 0) {
+        [self showUploadingUpdatesView];
+    }
+
+    __weak __block typeof(self) welf = self;
+    performBlockInMainThread(^{
+        if (welf.isSearching)
+            [welf doSearch:self.searchBar.text];
+        else
+        {
+            [welf.tableView reloadData];
+        }
+    });
+}
+
+- (void)sortUploadsMediaFile:(NSArray *)uploadsMediaFile {
+
+    uploadsMediaFile = [uploadsMediaFile sortedArrayUsingComparator:^NSComparisonResult(MediaFileUpload *obj1, MediaFileUpload *obj2) {
+        return [obj2.mediaFile.timestampToUiText compare:obj1.mediaFile.timestampToUiText];
+    }];
+
+
+    if (self.isSearching) {
+        self.searchingUploadFiles = [uploadsMediaFile mutableCopy];
+    }
+    else {
+        self.mediaFileUploads = [uploadsMediaFile mutableCopy];
+    }
+}
+
+#pragma mark - Download Uploading File
+
+/*
+- (BOOL)startDownloadOfUploadingFile:(QxMediaFile *)mediaFile forCell:(UploadsMediaTableViewCell *)cell atIndex:(NSIndexPath*)indexPath
+{
+    return NO;
+
+    NSMutableArray *attachments = [[[MessageAttachmentDBService sharedService] getAttachmentsForMediaFileId:mediaFile.] mutableCopy];
+    MessageAttachment *attachment = [attachments firstObject];
+
+    if ([[MediaFileService getInstance] fileSupportedWithMimeType:mediaFile.mimeType andFileName:mediaFile.fileName])
+    {
+        switch (attachment.status)
+        {
+            case AttachmentStatusDownloadFailed:
+            case AttachmentStatusToBeDownloaded: {
+
+//                __block __weak typeof(self) weakSelf = self;
+                [[QliqConnectModule sharedQliqConnectModule] downloadAttachment:attachment completion:^(CompletitionStatus status, id result, NSError * error){
+
+                    if (error)
+                    {
+                        //Need to show banner
+                    }
+                    else
+                    {
+                    }
+                }];
+
+                [cell setupProgressHandler:attachment.attachmentId];
+                return YES;
+                break;
+            }
+        }
+
+        return NO;
+    }
+    else
+    {
+        return  NO;
+    }
+}
+ */
+
+- (BOOL)startDownloadOfUploadingFile:(QxMediaFile *)mediaFile forCell:(UploadsMediaTableViewCell *)cell atIndex:(NSIndexPath*)indexPath
+{
+    if (mediaFile && mediaFile.fileName) {
+        [cell setupProgressHandler:mediaFile.databaseId];
+        [self uploadFailedFile:mediaFile];
+    }
+    return YES;
+}
+
+#pragma mark - Actions -
+
+#pragma mark * IBActions
+
+- (IBAction)onBackButton:(id)sender {
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+#pragma mark - Notifications -
+
+- (void)updateUploadFiles:(NSNotification *)notification {
+    QxMediaFile *mediaFile = [notification object];
+
+    if (mediaFile) {
+        for (MediaFileUpload *uploadFile in self.mediaFileUploads) {
+            if (uploadFile.mediaFile.databaseId == mediaFile.databaseId) {
+                [self.mediaFileUploads removeObject:uploadFile];
+                break;
+            }
+        }
+    }
+    
+    __weak __block typeof(self) weakSelf = self;
+    dispatch_async_main(^{
+        [weakSelf.tableView reloadData];
+    });
+}
+
+#pragma mark - Delegate Methods -
+#pragma mark * TableViewDelegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    if (self.isSearching)
+    {
+        return self.searchingUploadFiles.count;
+    }
+    else
+    {
+        return self.mediaFileUploads.count;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    static NSString *uploadsMediaCellID = @"UploadsMediaTableViewCell_ID";
+    UploadsMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:uploadsMediaCellID];
+    cell.delegate = self;
+
+    MediaFileUpload *upload = nil;
+
+    if (self.isSearching) {
+        if (indexPath.row >= self.searchingUploadFiles.count)
+            return nil;
+        upload = [self.searchingUploadFiles objectAtIndex:indexPath.row];
+    }
+    else
+        upload = [self.mediaFileUploads objectAtIndex:indexPath.row];
+
+    [cell setCell:upload withIndexPath:indexPath];
+    cell.contentTypeImageView.tag = indexPath.row;
+    UITapGestureRecognizer *tapFailedFileGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(uploadFailedFiles:)];
+//    [tapFailedFileGestureRecognizer addTarget:cell.contentTypeImageView action:UIControlEventTouchUpInside];
+    [cell.contentTypeImageView setUserInteractionEnabled:YES];
+    [cell.contentTypeImageView addGestureRecognizer:tapFailedFileGestureRecognizer];
+
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    MediaFileUpload *upload = nil;
+
+    if (self.isSearching) {
+        upload = [self.searchingUploadFiles objectAtIndex:indexPath.row];
+    }
+    else
+        upload = [self.mediaFileUploads objectAtIndex:indexPath.row];
+
+    if (upload) {
+<<<<<<< .merge_file_F95tWZ
+
+        MediaFileService *sharedService = [MediaFileService getInstance];
+
+        if ([sharedService isDocumentFileMime:upload.mediaFile.mimeType FileName:upload.mediaFile.encryptedFilePath])
+        {
+            DocumentAttachmentViewController *mediaViewer =  [kMainStoryboard instantiateViewControllerWithIdentifier:NSStringFromClass([DocumentAttachmentViewController class])];
+            mediaViewer.uploadMediaFile               = upload.mediaFile;
+            mediaViewer.shouldShowDeleteButton  = YES;
+            [self.navigationController pushViewController:mediaViewer animated:YES];
+        }
+
+        //Audio
+        if ([sharedService isAudioFileMime:upload.mediaFile.mimeType FileName:upload.mediaFile.encryptedFilePath])
+        {
+            AudioAttachmentViewController *mediaViewer = [kMainStoryboard instantiateViewControllerWithIdentifier:NSStringFromClass([AudioAttachmentViewController class])];
+            mediaViewer.uploadMediaFile               = upload.mediaFile;
+            mediaViewer.shouldShowDeleteButton  = YES;
+            [self.navigationController pushViewController:mediaViewer animated:YES];
+        }
+
+        //Image
+        if ([sharedService isImageFileMime:upload.mediaFile.mimeType FileName:upload.mediaFile.encryptedFilePath])
+        {
+            ImageAttachmentViewController *mediaViewer = [kMainStoryboard instantiateViewControllerWithIdentifier:NSStringFromClass([ImageAttachmentViewController class])];
+            mediaViewer.uploadMediaFile               = upload.mediaFile;
+            mediaViewer.shouldShowDeleteButton  = YES;
+            [self.navigationController pushViewController:mediaViewer animated:YES];
+        }
+
+        //Video
+        if ([sharedService isVideoFileMime:upload.mediaFile.mimeType FileName:upload.mediaFile.encryptedFilePath])
+        {
+            VideoAttachmentViewController *mediaViewer = [kMainStoryboard instantiateViewControllerWithIdentifier:NSStringFromClass([VideoAttachmentViewController class])];
+            mediaViewer.uploadMediaFile              = upload.mediaFile;
+            mediaViewer.shouldShowDeleteButton  = YES;
+            [self.navigationController pushViewController:mediaViewer animated:YES];
+=======
+        if ([upload canRetry]) {
+            [self reupload:upload];
+>>>>>>> .merge_file_z0rg6Y
+        }
+    }
+}
+
+#pragma mark * UploadsMediaTableViewCell Delgate
+
+- (BOOL)startDownloadOfUploadingFile:(QxMediaFile *)mediaFile forCell:(id)cell withIndexPath:(NSIndexPath*)indexPath
+{
+//    return [self startDownloadOfUploadingFile:mediaFile forCell:(UploadsMediaTableViewCell*)cell atIndex:indexPath];
+    return [self startDownloadOfUploadingFile:mediaFile forCell:(UploadsMediaTableViewCell*)cell atIndex:indexPath];
+}
+
+#pragma mark * UISearchBarField
+
+- (void)doSearch:(NSString *)searchText
+{
+    NSMutableArray *tmpArr = self.mediaFileUploads;
+
+    SearchOperation * operation = [[SearchOperation alloc] initWithArray:tmpArr andSearchString:searchText];
+    self.searchingUploadFiles = [[operation searchUploadFileForSearchText:searchText] mutableCopy];
+
+    self.isSearching = (operation != nil);
+
+    __weak __block typeof(self) weakSelf = self;
+    dispatch_async_main(^{
+        [weakSelf.tableView reloadData];
+    });
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+
+    [self doSearch:searchText];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+
+    [self doSearch:searchBar.text];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    searchBar.text = nil;
+    [searchBar resignFirstResponder];
+}
+
+#pragma mark * UIScrollView Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.searchBar resignFirstResponder];
+}
+
+- (void) uploadFile:(MediaFile *)mediaFile
+{
+    if (self.uploadToQliqStorService == nil) {
+        self.uploadToQliqStorService = [[UploadToQliqStorService alloc] init];
+    }
+
+    NSString *publicKey = nil;
+    NSString *thumbnail = [MessageAttachment base64EncodeImage:mediaFile.thumbnail useJpeg:YES quality:0.7f];
+    
+    QliqStorUploadParams *uploadTarget = [[QliqStorUploadParams alloc] init];
+    uploadTarget.uploadUuid = [[NSUUID UUID] UUIDString];
+    uploadTarget.qliqStorQliqId = [QliqGroupDBService getFirstQliqStorId];
+    SipContact *qliqStorContact = [[SipContactDBService sharedService] sipContactForQliqId:uploadTarget.qliqStorQliqId];
+    if (qliqStorContact) {
+        publicKey = qliqStorContact.publicKey;
+    }
+
+    [self.uploadToQliqStorService uploadFile:mediaFile.decryptedPath displayFileName:mediaFile.fileName thumbnail:thumbnail to:uploadTarget publicKey:publicKey withCompletion:^(CompletitionStatus status, id result, NSError *error) {
+        [self handleUploadToQliqStorCompleted:status error:error];
+    } withIsCancelled:nil];
+}
+
+<<<<<<< .merge_file_F95tWZ
+- (void) uploadFailedFile:(QxMediaFile *)mediaFile
+=======
+- (void) reupload:(MediaFileUpload *)upload
+>>>>>>> .merge_file_z0rg6Y
+{
+    if (self.uploadToQliqStorService == nil) {
+        self.uploadToQliqStorService = [[UploadToQliqStorService alloc] init];
+    }
+<<<<<<< .merge_file_F95tWZ
+
+    NSString *publicKey = nil;
+    NSString *thumbnail = mediaFile.thumbnail;
+
+    QliqStorUploadParams *uploadTarget = [[QliqStorUploadParams alloc] init];
+    uploadTarget.uploadUuid = [[NSUUID UUID] UUIDString];
+    uploadTarget.qliqStorQliqId = [QliqGroupDBService getFirstQliqStorId];
+    SipContact *qliqStorContact = [[SipContactDBService sharedService] sipContactForQliqId:uploadTarget.qliqStorQliqId];
+    if (qliqStorContact) {
+        publicKey = qliqStorContact.publicKey;
+    }
+    NSString *filePath = [QxMediaFileDBService decryptedFilePathForMediaFile:mediaFile];
+
+    [self.uploadToQliqStorService uploadFile:filePath displayFileName:mediaFile.fileName thumbnail:thumbnail to:uploadTarget publicKey:publicKey withCompletion:^(CompletitionStatus status, id result, NSError *error) {
+=======
+    
+    NSString *publicKey = nil;
+    SipContact *qliqStorContact = [[SipContactDBService sharedService] sipContactForQliqId:upload.qliqStorQliqId];
+    if (qliqStorContact) {
+        publicKey = qliqStorContact.publicKey;
+    }
+    
+    [self.uploadToQliqStorService reuploadFile:upload publicKey:publicKey withCompletion:^(CompletitionStatus status, id result, NSError *error) {
+>>>>>>> .merge_file_z0rg6Y
+        [self handleUploadToQliqStorCompleted:status error:error];
+    } withIsCancelled:nil];
+}
+
+- (void) handleUploadToQliqStorCompleted:(CompletitionStatus) status error:(NSError *)error
+{
+    dispatch_async_main(^{
+        [SVProgressHUD dismiss];
+    });
+    
+    if (error) {
+        [self showAlertWithTitle:QliqLocalizedString(@"1072-TextWarning") message:error.localizedDescription completion:^{
+            [self dismissUploadingViewWithCompletitionStatus:status];
+        }];
+    } else {
+        [self showAlertWithTitle:@"Info" message:@"The upload was sent to server" completion:^{
+            [self dismissUploadingViewWithCompletitionStatus:status];
+        }];
+    }
+}
+
+- (void) showAlertWithTitle:(NSString *)title message:(NSString *)message completion:(void (^ __nullable)(void))completion
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:NSLocalizedString(@"1-ButtonOk", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //[self onBackAction:nil];
+    }];
+    
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:completion];
+}
+
+- (IBAction)onBackAction:(id)sender {
+    
+    DDLogSupport(@"Back from UploadsMediaViewController");
+    if (self.navigationController.presentingViewController && [[self.navigationController viewControllers].firstObject isEqual:self]) {
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void) mediaFileUploadEvent:(MediaFileUploadObserverEvent)event databaseId:(int)databaseId
+{
+    [self.mediaFileUploads removeAllObjects];
+
+    if (self.uploadToEMR) {
+        self.mediaFileUploads = [MediaFileUploadDBService getWithShareType:UploadedToEmrMediaFileUploadShareType skip:0 limit:0];
+    }
+    else {
+        self.mediaFileUploads = [MediaFileUploadDBService getWithShareType:UploadedToQliqStorMediaFileUploadShareType skip:0 limit:0];
+    }
+    [self sortUploadsMediaFile:self.mediaFileUploads];
+
+    __weak __block typeof(self) welf = self;
+    performBlockInMainThread(^{
+        if (welf.isSearching)
+            [welf doSearch:self.searchBar.text];
+        else
+        {
+            [welf.tableView reloadData];
+        }
+    });
+}
+
+@end

@@ -1,0 +1,37 @@
+{
+    "properties": {
+        "Message": {
+            "properties": {
+                "Data": {
+                    "properties": {
+                        "username": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "password": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "qliq_id": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "uuid": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "timestamp": {
+                            "required": true,
+                            "type": "number"
+                        }
+                    },
+                    "required": true,
+                    "type": "object"
+                }
+            },
+            "required": true,
+            "type": "object"
+        }
+    },
+    "type": "object"
+}

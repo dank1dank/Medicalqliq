@@ -1,0 +1,69 @@
+diff -rupN -x '*.mak' -x '*.orig' -x '*.rej' -x '*~' -x '*auto.h' pjproject-2.4-org/pjsip/include/pjsip/sip_transport.h pjproject-2.4-shutdown/pjsip/include/pjsip/sip_transport.h
+--- pjproject-2.4-org/pjsip/include/pjsip/sip_transport.h	2014-03-04 03:18:51.000000000 +0100
++++ pjproject-2.4-shutdown/pjsip/include/pjsip/sip_transport.h	2015-05-26 13:39:56.292227318 +0200
+@@ -1513,6 +1513,15 @@ PJ_DECL(pj_status_t) pjsip_transport_rem
+ 
+ 
+ /**
++ * qliqSOFT: shutdown all transports in this manager.
++ *
++ * @param mgr        The transport manager.
++ *
++ * @return        PJ_SUCCESS on success.
++ */
++PJ_DECL(pj_status_t) pjsip_tpmgr_shutdown_all_transports(pjsip_tpmgr *mgr);
++
++/**
+  * @}
+  */
+ 
+diff -rupN -x '*.mak' -x '*.orig' -x '*.rej' -x '*~' -x '*auto.h' pjproject-2.4-org/pjsip/src/pjsip/sip_transport.c pjproject-2.4-shutdown/pjsip/src/pjsip/sip_transport.c
+--- pjproject-2.4-org/pjsip/src/pjsip/sip_transport.c	2015-03-03 05:29:54.000000000 +0100
++++ pjproject-2.4-shutdown/pjsip/src/pjsip/sip_transport.c	2015-05-26 13:39:54.952227352 +0200
+@@ -1175,6 +1175,46 @@ PJ_DEF(pj_status_t) pjsip_transport_shut
+ }
+ 
+ 
++/*
++ * qliqSOFT: pjsip_tpmgr_shutdown()
++ *
++ * Shutdown all transports.
++ */
++PJ_DEF(pj_status_t) pjsip_tpmgr_shutdown_all_transports( pjsip_tpmgr *mgr )
++{
++    pj_hash_iterator_t itr_val;
++    pj_hash_iterator_t *itr;
++    pj_status_t status;
++    int i = 0;
++
++    PJ_LOG(2, (THIS_FILE, "Shuting down all transports in manager"));
++
++    pj_lock_acquire(mgr->lock);
++
++    itr = pj_hash_first(mgr->table, &itr_val);
++    while (itr != NULL) {
++	    pj_hash_iterator_t *next;
++	    pjsip_transport *transport;
++
++	    transport = (pjsip_transport*) pj_hash_this(mgr->table, itr);
++
++	    next = pj_hash_next(mgr->table, itr);
++
++	    status = pjsip_transport_shutdown(transport);
++	    if (status != PJ_SUCCESS) {
++		PJ_LOG(1, (THIS_FILE, "Error: couldn't shutdown %d-nth transport: %d", i, status));
++	    }
++
++	    itr = next;
++	    ++i;
++    }
++
++    pj_lock_release(mgr->lock);
++
++    return PJ_SUCCESS;
++}
++
++
+ /**
+  * Unregister transport.
+  */

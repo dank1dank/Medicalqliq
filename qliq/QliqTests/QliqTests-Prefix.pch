@@ -1,0 +1,75 @@
+//
+// Prefix header for all source files of the 'QliqTests' target in the 'QliqTests' project
+////
+//
+//#ifdef __OBJC__
+//    #import <UIKit/UIKit.h>
+//    #import <Foundation/Foundation.h>
+//#endif
+//
+// Prefix header for all source files of the 'qliqConnect' target in the 'qliqConnect' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "Constants.h"
+#import "Log.h"
+#import "TestFlight.h"
+#import "UIKitAdditions.h"
+#import "QliqToolkit.h"
+
+#import "UIAlertView+MKNetworkKitAdditions.h"
+
+#import "AppDelegate.h"
+extern AppDelegate * appDelegate;
+
+#define NSLog TFLog
+//#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
+//Keyboard shortcuts
+#define keyboardHeightFromNotification(notification) [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey]CGRectValue].size.height
+#define keyboardAnimationFromNotification(notification) [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]
+
+#define kDecryptedDirectory [NSString stringWithFormat:@"%@Decrypted/",NSTemporaryDirectory()]
+
+#define userInfoWithDescription(description) [NSDictionary dictionaryWithObjects:[NSArray arrayWithObject:description]	 \
+forKeys:[NSArray arrayWithObject:NSLocalizedDescriptionKey]]
+#define errorDomainForModule(moduleName) [NSString stringWithFormat:@"com.qliq.%@",moduleName]
+#define errorCurrentDomain [NSString stringWithFormat:@"com.qliq.%@",NSStringFromClass([self class])]
+
+#define UIPasteboardNameQliq @"com.qliq.pasboard"
+#endif
+
+//Disable functional
+#define InviteEnabled 0
+
+//Logs settings
+#define LogReachablity           1
+#define LogMKNetworkRequestFails 0
+//..
+
+//#define DEBUG TRUE;
+//#define NO_DB_ENCRYPTION
+
+#ifdef DEBUG
+#define kHockeyDebugEnabled
+//#define NO_DB_ENCRYPTION
+#define TEST_ACCOUNT_PASSWORD @"start123"
+#define CAN_CREATE_TEST_DATA
+#else
+#	define TTDLog(...)
+#endif
+
+
+// TTRLog always displays output regardless of the DEBUG setting
+//#define TTRLog(fmt, ...) NSLog((@"" fmt " (%s:%d)"), ##__VA_ARGS__, __PRETTY_FUNCTION__, __LINE__)
+
+
+//#endif

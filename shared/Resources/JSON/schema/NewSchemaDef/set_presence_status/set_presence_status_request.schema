@@ -1,0 +1,37 @@
+{
+   "properties":{
+      "Message":{
+         "properties":{
+            "Data":{
+               "properties":{
+                  "username":{
+                     "required":true,
+                     "type":"string"
+                  },
+                  "password":{
+                     "required":true,
+                     "type":"string"
+                  },
+                  "status":{
+                     "required":true,
+                     "type":"string"
+                  },
+                  "message":{
+                     "required":false,
+                     "type":"string"
+                  },
+                  "forwarding_qliq_id":{
+                     "required":false,
+                     "type":"string"
+                  }
+               },
+               "required":true,
+               "type":"object"
+            }
+         },
+         "required":true,
+         "type":"object"
+      }
+   },
+   "type":"object"
+}

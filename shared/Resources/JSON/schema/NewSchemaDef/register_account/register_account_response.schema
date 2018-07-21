@@ -1,0 +1,55 @@
+{
+    "properties": {
+        "Message": {
+            "properties": {
+                "Data": {
+                    "properties": {
+                        "demo_account1": {
+                            "email": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "password": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "required": false,
+                            "type": "object"
+                        },
+                        "demo_account2": {
+                            "email": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "password": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "required": false,
+                            "type": "object"
+                        }
+                    },
+                    "required": false,
+                    "type": "object"
+                },
+                "Error": {
+                    "properties": {
+                        "error_code": {
+                            "required": false,
+                            "type": "string"
+                        },
+                        "error_msg": {
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "required": false,
+                    "type": "object"
+                }
+            },
+            "required": true,
+            "type": "object"
+        }
+    },
+    "type": "object"
+}

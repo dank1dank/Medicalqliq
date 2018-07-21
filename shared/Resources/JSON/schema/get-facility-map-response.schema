@@ -1,0 +1,87 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Command": {
+               "pattern": "get",
+               "required": true,
+               "type": "string"
+            },
+            "Data": {
+               "items": {
+                  "properties": {
+                     "buildings": {
+                        "items": {
+                           "properties": {
+                              "floors": {
+                                 "items": {
+                                    "properties": {
+                                       "name": {
+                                          "required": true,
+                                          "type": "string"
+                                       },
+                                       "rooms": {
+                                          "items": {
+                                             "properties": {
+                                                "max_occ": {
+                                                   "required": false,
+                                                   "type": "integer"
+                                                },
+                                                "name": {
+                                                   "required": true,
+                                                   "type": "string"
+                                                }
+                                             },
+                                             "type": "object"
+                                          },
+                                          "required": true,
+                                          "type": "array"
+                                       }
+                                    },
+                                    "type": "object"
+                                 },
+                                 "required": true,
+                                 "type": "array"
+                              },
+                              "name": {
+                                 "required": true,
+                                 "type": "string"
+                              }
+                           },
+                           "type": "object"
+                        },
+                        "required": true,
+                        "type": "array"
+                     },
+                     "facility_name": {
+                        "required": true,
+                        "type": "string"
+                     },
+                     "facility_npi": {
+                        "required": true,
+                        "type": "string"
+                     }
+                  },
+                  "required": true,
+                  "type": "object"
+               },
+               "required": true,
+               "type": "array"
+            },
+            "Subject": {
+               "pattern": "facilities_info",
+               "required": true,
+               "type": "string"
+            },
+            "Type": {
+               "pattern": "web2client",
+               "required": true,
+               "type": "string"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

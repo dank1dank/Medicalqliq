@@ -1,0 +1,62 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Data": {
+               "properties": {
+                  "username": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "password": {
+                     "required": false,
+                     "type": "string"
+                  },
+                  "recipient_details": {
+                     "properties": {
+                        "email": {
+                           "type": "string"
+                        },
+                        "first_name": {
+                           "type": "string"
+                        },
+                        "last_name": {
+                           "type": "string"
+                        },
+                        "middle": {
+                           "type": "string"
+                        },
+                        "mobile": {
+                           "type": "string"
+                        }
+                     },
+                     "required": false,
+                     "type": "object"
+                  },
+                  "recipient_qliq_id": {
+                     "required": false,
+                     "type": "string"
+                  },
+                  "invitation_type": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "notify_recipient" : {
+                     "required": false,
+                     "type": "boolean"
+                  },
+                  "invitation_reason": {
+                     "required": true,
+                     "type": "string"
+                  }
+               },
+               "required": true,
+               "type": "object"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

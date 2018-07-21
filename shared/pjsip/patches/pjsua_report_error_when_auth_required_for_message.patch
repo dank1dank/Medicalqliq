@@ -1,0 +1,91 @@
+diff -rupN pjproject-2.1.0-org/pjsip/src/pjsua-lib/pjsua_im.c pjproject-2.1.0-qliq/pjsip/src/pjsua-lib/pjsua_im.c
+--- pjproject-2.1.0-org/pjsip/src/pjsua-lib/pjsua_im.c	2012-06-20 12:39:05.000000000 +0200
++++ pjproject-2.1.0-qliq/pjsip/src/pjsua-lib/pjsua_im.c	2013-08-13 17:01:17.000000000 +0200
+@@ -352,46 +352,46 @@ static void im_callback(void *token, pjs
+ 
+ 
+ 	/* Handle authentication challenges */
+-	if (e->body.tsx_state.type == PJSIP_EVENT_RX_MSG &&
+-	    (tsx->status_code == 401 || tsx->status_code == 407)) 
+-	{
+-	    pjsip_rx_data *rdata = e->body.tsx_state.src.rdata;
+-	    pjsip_tx_data *tdata;
+-	    pjsip_auth_clt_sess auth;
+-	    pj_status_t status;
+-
+-	    PJ_LOG(4,(THIS_FILE, "Resending IM with authentication"));
+-
+-	    /* Create temporary authentication session */
+-	    pjsip_auth_clt_init(&auth,pjsua_var.endpt,rdata->tp_info.pool, 0);
+-    
+-	    pjsip_auth_clt_set_credentials(&auth, 
+-		pjsua_var.acc[im_data->acc_id].cred_cnt,
+-		pjsua_var.acc[im_data->acc_id].cred);
+-
+-	    pjsip_auth_clt_set_prefs(&auth, 
+-				     &pjsua_var.acc[im_data->acc_id].cfg.auth_pref);
+-
+-	    status = pjsip_auth_clt_reinit_req(&auth, rdata, tsx->last_tx,
+-					       &tdata);
+-	    if (status == PJ_SUCCESS) {
+-		pjsua_im_data *im_data2;
+-
+-		/* Must duplicate im_data */
+-		im_data2 = pjsua_im_data_dup(tdata->pool, im_data);
+-
+-		/* Increment CSeq */
+-		PJSIP_MSG_CSEQ_HDR(tdata->msg)->cseq++;
+-
+-		/* Re-send request */
+-		status = pjsip_endpt_send_request( pjsua_var.endpt, tdata, -1,
+-						   im_data2, &im_callback);
+-		if (status == PJ_SUCCESS) {
+-		    /* Done */
+-		    return;
+-		}
+-	    }
+-	}
++//	if (e->body.tsx_state.type == PJSIP_EVENT_RX_MSG &&
++//	    (tsx->status_code == 401 || tsx->status_code == 407)) 
++//	{
++//	    pjsip_rx_data *rdata = e->body.tsx_state.src.rdata;
++//	    pjsip_tx_data *tdata;
++//	    pjsip_auth_clt_sess auth;
++//	    pj_status_t status;
++//
++//	    PJ_LOG(4,(THIS_FILE, "Resending IM with authentication"));
++//
++//	    /* Create temporary authentication session */
++//	    pjsip_auth_clt_init(&auth,pjsua_var.endpt,rdata->tp_info.pool, 0);
++//    
++//	    pjsip_auth_clt_set_credentials(&auth, 
++//		pjsua_var.acc[im_data->acc_id].cred_cnt,
++//		pjsua_var.acc[im_data->acc_id].cred);
++//
++//	    pjsip_auth_clt_set_prefs(&auth, 
++//				     &pjsua_var.acc[im_data->acc_id].cfg.auth_pref);
++//
++//	    status = pjsip_auth_clt_reinit_req(&auth, rdata, tsx->last_tx,
++//					       &tdata);
++//	    if (status == PJ_SUCCESS) {
++//		pjsua_im_data *im_data2;
++//
++//		/* Must duplicate im_data */
++//		im_data2 = pjsua_im_data_dup(tdata->pool, im_data);
++//
++//		/* Increment CSeq */
++//		PJSIP_MSG_CSEQ_HDR(tdata->msg)->cseq++;
++//
++//		/* Re-send request */
++//		status = pjsip_endpt_send_request( pjsua_var.endpt, tdata, -1,
++//						   im_data2, &im_callback);
++//		if (status == PJ_SUCCESS) {
++//		    /* Done */
++//		    return;
++//		}
++//	    }
++//	}
+ 
+ 	if (tsx->status_code/100 == 2) {
+ 	    PJ_LOG(4,(THIS_FILE, 
+ 

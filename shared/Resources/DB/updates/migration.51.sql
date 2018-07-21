@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS contact_list_conversations (contact_list_id INTEGER, conversation_id INTEGER, multiparty_id TEXT);

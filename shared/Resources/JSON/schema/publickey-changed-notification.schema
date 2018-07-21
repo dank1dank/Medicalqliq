@@ -1,0 +1,36 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Command": {
+               "pattern": "notification",
+               "required": true,
+               "type": "string"
+            },
+            "Data": {
+               "properties": {
+                  "user_id": {
+                     "required": true,
+                     "type": "string"
+                  }
+               },
+               "required": true,
+               "type": "object"
+            },
+            "Subject": {
+               "pattern": "public_key",
+               "required": true,
+               "type": "string"
+            },
+            "Type": {
+               "pattern": "a2a",
+               "required": true,
+               "type": "string"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

@@ -1,0 +1,48 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Data": {
+               "properties":{
+                        "username": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "password": {
+                            "required": true,
+                            "type": "string"
+                        },
+                  "contacts":{
+                     "items":{
+                        "properties":{
+                                 "contact_id":{
+                                    "required":true,
+                                    "type":"string"
+                                 },
+                                 "email":{
+                                    "required":false,
+                                    "type":"string"
+                                 },
+                                 "mobile":{
+                                    "required":false,
+                                    "type":"string"
+                                 }
+                        
+                        },
+                        "required":true,
+                        "type":"object"
+                     },
+                     "required":true,
+                     "type":"array"
+                  }
+               },
+               "required":false,
+               "type":"object"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

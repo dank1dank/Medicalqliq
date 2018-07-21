@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ASAP Message</key>
+	<dict>
+		<key>Incoming Message</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>qliqChime</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>2</integer>
+		</dict>
+		<key>reminderChimeInterval</key>
+		<integer>3</integer>
+	</dict>
+	<key>ASAP Message Care Channel</key>
+	<dict>
+		<key>Incoming Message Care Channel</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>qliqChime</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>2</integer>
+		</dict>
+		<key>reminderChimeInterval</key>
+		<integer>0</integer>
+	</dict>
+	<key>FYI Message</key>
+	<dict>
+		<key>Incoming Message</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>qliqChime</string>
+			<key>soundEnabled</key>
+			<false/>
+			<key>vibrateEnabled</key>
+			<false/>
+			<key>volume</key>
+			<integer>1</integer>
+		</dict>
+		<key>reminderChimeInterval</key>
+		<integer>5</integer>
+	</dict>
+	<key>FYI Message Care Channel</key>
+	<dict>
+		<key>Incoming Message Care Channel</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>qliqChime</string>
+			<key>soundEnabled</key>
+			<false/>
+			<key>vibrateEnabled</key>
+			<false/>
+			<key>volume</key>
+			<integer>1</integer>
+		</dict>
+		<key>reminderChimeInterval</key>
+		<integer>0</integer>
+	</dict>
+	<key>Normal Message</key>
+	<dict>
+		<key>Ack Message</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Acknowledge</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>1</integer>
+		</dict>
+		<key>Incoming Message</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>qliqChime</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>1</integer>
+		</dict>
+		<key>Ringer</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Ringer</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>1</integer>
+			<key>hidden</key>
+			<true/>
+		</dict>
+		<key>Send Message</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Send</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<false/>
+			<key>volume</key>
+			<integer>1</integer>
+		</dict>
+		<key>reminderChimeInterval</key>
+		<integer>5</integer>
+	</dict>
+	<key>Normal Message Care Channel</key>
+	<dict>
+		<key>Ack Message Care Channel</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Acknowledge</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>1</integer>
+		</dict>
+		<key>Incoming Message Care Channel</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>qliqChime</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>0</integer>
+		</dict>
+		<key>Ringer Care Channel</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Ringer</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>1</integer>
+			<key>hidden</key>
+			<true/>
+		</dict>
+		<key>Send Message Care Channel</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Send</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<false/>
+			<key>volume</key>
+			<integer>1</integer>
+		</dict>
+		<key>reminderChimeInterval</key>
+		<integer>0</integer>
+	</dict>
+	<key>Urgent Message</key>
+	<dict>
+		<key>Ack Message</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Acknowledge</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>1</integer>
+		</dict>
+		<key>Incoming Message</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Urgent</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>2</integer>
+		</dict>
+		<key>reminderChimeInterval</key>
+		<integer>1</integer>
+	</dict>
+	<key>Urgent Message Care Channel</key>
+	<dict>
+		<key>Ack Message CareChannel</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Acknowledge</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<false/>
+			<key>volume</key>
+			<integer>1</integer>
+		</dict>
+		<key>Incoming Message Care Channel</key>
+		<dict>
+			<key>dictionaryName</key>
+			<string>Urgent</string>
+			<key>soundEnabled</key>
+			<true/>
+			<key>vibrateEnabled</key>
+			<true/>
+			<key>volume</key>
+			<integer>2</integer>
+		</dict>
+		<key>reminderChimeInterval</key>
+		<integer>1</integer>
+	</dict>
+</dict>
+</plist>

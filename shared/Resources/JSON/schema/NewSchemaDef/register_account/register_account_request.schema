@@ -1,0 +1,52 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Data": {
+               "properties": {
+                  "account_type": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "email": {
+                      "type": "string",
+                      "required": true
+                  },
+                  "first_name": {
+                      "type": "string",
+                      "required": true
+                  },
+                  "last_name": {
+                      "type": "string",
+                      "required": true
+                  },
+                  "middle": {
+                       "type": "string"
+                  },
+                  "organization": {
+                      "type": "string",
+                      "required": true
+                  },
+                  "website": {
+                      "type": "string",
+                      "required": true
+                  },
+                  "phone": {
+                     "type": "string",
+                     "required": true
+                  },
+                  "title": {
+                     "type": "string",
+                     "required": true
+                  }
+               },
+               "required": true,
+               "type": "object"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

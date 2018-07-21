@@ -1,0 +1,38 @@
+{
+   "properties":{
+      "Message":{
+         "properties":{
+            "Data":{
+               "properties":{
+                  "username":{
+                     "required":true,
+                     "type":"string"
+                  },
+                  "password":{
+                     "required":true,
+                     "type":"string"
+                  },
+                  "title":{
+                     "type":"string"
+                  },
+                  "organization":{
+                     "type":"string"
+                  },
+                  "city":{
+                     "type":"string"
+                  },
+                  "zip":{
+                     "type":"string"
+                  }
+               },
+               "required":true,
+               "type":"object"
+            }
+         },
+         "required":true,
+         "type":"object"
+      }
+   },
+   "type":"object"
+}
+

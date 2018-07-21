@@ -1,0 +1,329 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Command": {
+               "pattern": "get",
+               "required": true,
+               "type": "string"
+            },
+            "Data": {
+               "properties": {
+                  "GroupList": {
+                     "items": {
+                        "properties": {
+                           "group": {
+                              "properties": {
+                                 "address": {
+                                    "type": "string"
+                                 },
+                                 "city": {
+                                    "type": "string"
+                                 },
+                                 "name": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "npi": {
+                                    "required": false,
+                                    "type": "string"
+                                 },
+                                 "state": {
+                                    "type": "string"
+                                 },
+                                 "type": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "zip": {
+                                    "type": "string"
+                                 }
+                              },
+                              "required": true,
+                              "type": "object"
+                           },
+                           "members": {
+                              "items": {
+                                 "properties": {
+                                    "Facilities": {
+                                       "items": {
+                                          "properties": {
+                                             "address": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "city": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "it_contact_email": {
+                                                "type": "string"
+                                             },
+                                             "it_contact_name": {
+                                                "type": "string"
+                                             },
+                                             "it_contact_phone": {
+                                                "type": "string"
+                                             },
+                                             "name": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "npi": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "phone": {
+                                                "type": "string"
+                                             },
+                                             "state": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "type": {
+                                                "required": true,
+                                                "type": "string"
+                                             },
+                                             "zip": {
+                                                "required": true,
+                                                "type": "string"
+                                             }
+                                          },
+                                          "type": "object"
+                                       },
+                                       "required": false,
+                                       "type": "array"
+                                    },
+                                    "email": {
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "fax": {
+                                       "type": "string"
+                                    },
+                                    "initials": {
+                                       "type": "string"
+                                    },
+                                    "mobile": {
+                                       "type": "string"
+                                    },
+                                    "name": {
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "npi": {
+                                       "required": false,
+                                       "type": "string"
+                                    },
+                                    "phone": {
+                                       "type": "string"
+                                    },
+                                    "public_key": {
+                                       "type": "string"
+                                    },
+                                    "role": {
+                                       "items": {
+                                          "required": true,
+                                          "type": "string"
+                                       },
+                                       "minItems": 1,
+                                       "required": true,
+                                       "type": "array"
+                                    },
+                                    "sip_uri": {
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "specialty": {
+                                       "type": "string"
+                                    },
+                                    "state": {
+                                       "type": "string"
+                                    },
+                                    "user_id": {
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "zip": {
+                                       "type": "string"
+                                    }
+                                 },
+                                 "required": true,
+                                 "type": "object"
+                              },
+                              "minItems": 1,
+                              "required": true,
+                              "type": "array"
+                           }
+                        },
+                        "required": true,
+                        "type": "object"
+                     },
+                     "minItems": 1,
+                     "required": true,
+                     "type": "array"
+                  },
+                  "SipServerInfo": {
+                     "properties": {
+                        "sip_server_port": {
+                           "maximum": 65535,
+                           "minimum": 1,
+                           "required": true,
+                           "type": "integer"
+                        },
+                        "sip_server_transport": {
+                           "required": true,
+                           "type": "string"
+                        },
+                        "sip_server_url": {
+                           "required": true,
+                           "type": "string"
+                        }
+                     },
+                     "required": true,
+                     "type": "object"
+                  },
+                  "UserInfo": {
+                     "properties": {
+                        "Facilities": {
+                           "items": {
+                              "properties": {
+                                 "address": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "city": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "it_contact_email": {
+                                    "type": "string"
+                                 },
+                                 "it_contact_name": {
+                                    "type": "string"
+                                 },
+                                 "it_contact_phone": {
+                                    "type": "string"
+                                 },
+                                 "name": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "npi": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "phone": {
+                                    "type": "string"
+                                 },
+                                 "state": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "type": {
+                                    "required": true,
+                                    "type": "string"
+                                 },
+                                 "zip": {
+                                    "required": true,
+                                    "type": "string"
+                                 }
+                              },
+                              "required": false,
+                              "type": "object"
+                           },
+                           "required": false,
+                           "type": "array"
+                        },
+                        "email": {
+                           "type": "string"
+                        },
+                        "fax": {
+                           "type": "string"
+                        },
+                        "initials": {
+                           "type": "string"
+                        },
+                        "mobile": {
+                           "type": "string"
+                        },
+                        "name": {
+                           "required": true,
+                           "type": "string"
+                        },
+                        "npi": {
+                           "required": false,
+                           "type": "string"
+                        },
+                        "phone": {
+                           "type": "string"
+                        },
+                        "public_key": {
+                           "type": "string"
+                        },
+                        "role": {
+                           "items": {
+                              "required": true,
+                              "type": "string"
+                           },
+                           "minItems": 1,
+                           "required": true,
+                           "type": "array"
+                        },
+                        "sip_uri": {
+                           "required": true,
+                           "type": "string"
+                        },
+                        "specialty": {
+                           "type": "string"
+                        },
+                        "state": {
+                           "type": "string"
+                        },
+                        "type": "array",
+                        "user_id": {
+                           "required": true,
+                           "type": "string"
+                        },
+                        "zip": {
+                           "type": "string"
+                        }
+                     },
+                     "required": true,
+                     "type": "object"
+                  },
+                  "WebServerInfo": {
+                     "properties": {
+                        "web_app_url": {
+                           "required": true,
+                           "type": "string"
+                        },
+                        "web_auth_url": {
+                           "required": true,
+                           "type": "string"
+                        }
+                     },
+                     "required": true,
+                     "type": "object"
+                  }
+               },
+               "required": true,
+               "type": "object"
+            },
+            "Subject": {
+               "pattern": "group_info",
+               "required": true,
+               "type": "string"
+            },
+            "Type": {
+               "pattern": "web2client",
+               "required": true,
+               "type": "string"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Test feature</key>
+	<dict>
+		<key>description</key>
+		<string>Test feature is amazing.\n\nIt will do everything, no matter what you want. We guarantee, the test feature will be very helpful for you</string>
+		<key>name</key>
+		<string>Test feature</string>
+	</dict>
+	<key>Share media</key>
+	<dict>
+		<key>description</key>
+		<string></string>
+		<key>name</key>
+		<string>Share media</string>
+	</dict>
+	<key>Search</key>
+	<dict>
+		<key>name</key>
+		<string>Search</string>
+		<key>description</key>
+		<string>Find what you need when you need it. Search will find the doctor, pharmacy or medical facility you need. All based on where you and your patients are.</string>
+	</dict>
+	<key>Mute</key>
+	<dict>
+		<key>name</key>
+		<string>Mute</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<key>Contacts</key>
+	<dict>
+		<key>name</key>
+		<string>Contacts</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<key>Add call</key>
+	<dict>
+		<key>name</key>
+		<string>Add call</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<key>Video call</key>
+	<dict>
+		<key>name</key>
+		<string>Video call</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<key>Speaker</key>
+	<dict>
+		<key>name</key>
+		<string>Speaker</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<key>Recent chats</key>
+	<dict>
+		<key>name</key>
+		<string>Recent chats</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<key>Recent calls</key>
+	<dict>
+		<key>name</key>
+		<string>Recent calls</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<key>Email</key>
+	<dict>
+		<key>name</key>
+		<string>Email</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<key>Audio</key>
+	<dict>
+		<key>name</key>
+		<string>Audio</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<key>Video</key>
+	<dict>
+		<key>name</key>
+		<string>Video</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Categories</key>
+	<dict>
+		<key>Default</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>qliqChime</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>incoming high.caf</string>
+					<key>medium</key>
+					<string>incoming Medium.caf</string>
+					<key>low</key>
+					<string>incoming low.caf</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Send</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>Send High.caf</string>
+					<key>medium</key>
+					<string>Send Medium.caf</string>
+					<key>low</key>
+					<string>Send Low.caf</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Acknowledge</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>Acknowledgement High.caf</string>
+					<key>medium</key>
+					<string>Acknowledgement Medium.caf</string>
+					<key>low</key>
+					<string>Acknowledgement Low.caf</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Urgent</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>Urgent High.caf</string>
+					<key>medium</key>
+					<string>Urgent Medium.caf</string>
+					<key>low</key>
+					<string>Urgent Low.caf</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Pager</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>Pager_High.caf</string>
+					<key>medium</key>
+					<string>Pager_Medium.caf</string>
+					<key>low</key>
+					<string>Pager_Low.caf</string>
+				</dict>
+			</dict>
+		</array>
+		<key>More...</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Horn</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>horn_High.caf</string>
+					<key>medium</key>
+					<string>horn_Medium.caf</string>
+					<key>low</key>
+					<string>horn_Low.caf</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Bamboo</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>alert2_High.caf</string>
+					<key>medium</key>
+					<string>alert2_Medium.caf</string>
+					<key>low</key>
+					<string>alert2_Low.caf</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Chopsticks</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>alert4_High.caf</string>
+					<key>medium</key>
+					<string>alert4_Medium.caf</string>
+					<key>low</key>
+					<string>alert4_Low.caf</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Droplet</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>alert10_high.caf</string>
+					<key>medium</key>
+					<string>alert10_Medium.caf</string>
+					<key>low</key>
+					<string>alert10_Low.caf</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Star</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>alert3_High.caf</string>
+					<key>medium</key>
+					<string>alert3_Medium.caf</string>
+					<key>low</key>
+					<string>alert3_Low.caf</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Zing</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>alert5_High.caf</string>
+					<key>medium</key>
+					<string>alert5_Medium.caf</string>
+					<key>low</key>
+					<string>alert5_Low.caf</string>
+				</dict>
+			</dict>
+		</array>
+		<key>Calls</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Ringer</string>
+				<key>filename</key>
+				<dict>
+					<key>high</key>
+					<string>Ringer.caf</string>
+					<key>medium</key>
+					<string>Ringer.caf</string>
+					<key>low</key>
+					<string>Ringer.caf</string>
+				</dict>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>

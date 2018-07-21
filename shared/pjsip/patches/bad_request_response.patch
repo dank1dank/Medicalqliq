@@ -1,0 +1,74 @@
+diff -rupN -x '*.mak' -x '*.orig' -x '*.rej' -x '*~' -x '*auto.h' pjproject-2.4-org/pjsip/src/pjsip/sip_endpoint.c pjproject-2.4-bad-request/pjsip/src/pjsip/sip_endpoint.c
+--- pjproject-2.4-org/pjsip/src/pjsip/sip_endpoint.c	2015-04-08 12:10:44.000000000 +0200
++++ pjproject-2.4-bad-request/pjsip/src/pjsip/sip_endpoint.c	2015-05-26 12:24:18.841505594 +0200
+@@ -963,6 +963,27 @@ static void endpt_on_rx_msg( pjsip_endpo
+ 		  status,
+ 		  (int)rdata->msg_info.len,	
+ 		  rdata->msg_info.msg_buf));
++	/*
++         * qliqSOFT - Respond with 400 if required headers are present,
++         * so that remote doesn't retransmit, or dangling
++         */
++        if (rdata->msg_info.cid != NULL &&
++            rdata->msg_info.cid->id.slen != 0 &&
++            rdata->msg_info.from != NULL &&
++            rdata->msg_info.to != NULL &&
++            rdata->msg_info.via != NULL &&
++            rdata->msg_info.cseq != NULL &&
++            rdata->msg_info.msg != NULL)
++        {
++            /* add this because tranport forgot to add it */
++            pj_strdup2(rdata->tp_info.pool,
++                       &rdata->msg_info.via->recvd_param,
++                       rdata->pkt_info.src_name);
++
++	    pjsip_endpt_respond_stateless(endpt, rdata,
++                      400, NULL,
++                      NULL, NULL);
++	}
+ 	return;
+     }
+ 
+diff -rupN -x '*.mak' -x '*.orig' -x '*.rej' -x '*~' -x '*auto.h' pjproject-2.4-org/pjsip/src/pjsip/sip_parser.c pjproject-2.4-bad-request/pjsip/src/pjsip/sip_parser.c
+--- pjproject-2.4-org/pjsip/src/pjsip/sip_parser.c	2013-06-19 08:47:43.000000000 +0200
++++ pjproject-2.4-bad-request/pjsip/src/pjsip/sip_parser.c	2015-05-26 13:23:48.419158570 +0200
+@@ -825,9 +825,12 @@ PJ_DEF(pj_bool_t) pjsip_find_msg( const
+ 		    pj_scan_advance_n(&scanner, 1, PJ_TRUE);
+ 
+ 		/* Get colon */
+-		if (pj_scan_get_char(&scanner) != ':') {
+-		    PJ_THROW(PJSIP_SYN_ERR_EXCEPTION);
+-		}
++		// qliqSOFT - Do not look for syntax here while
++		// determining the size of the packet
++		//if (pj_scan_get_char(&scanner) != ':') {
++		//    PJ_THROW(PJSIP_SYN_ERR_EXCEPTION);
++		//}
++		pj_scan_get_char(&scanner);
+ 
+ 		/* Get number */
+ 		pj_scan_get(&scanner, &pconst.pjsip_DIGIT_SPEC, &str_clen);
+@@ -1117,7 +1120,8 @@ parse_headers:
+ 	    }
+ 	}
+ 
+-	msg = NULL;
++	// qliqSOFT: don't make it NULL
++	//msg = NULL;
+     }
+     PJ_END;
+ 
+diff -rupN -x '*.mak' -x '*.orig' -x '*.rej' -x '*~' -x '*auto.h' pjproject-2.4-org/pjsip/src/pjsip/sip_transport.c pjproject-2.4-bad-request/pjsip/src/pjsip/sip_transport.c
+--- pjproject-2.4-org/pjsip/src/pjsip/sip_transport.c	2015-03-03 05:29:54.000000000 +0100
++++ pjproject-2.4-bad-request/pjsip/src/pjsip/sip_transport.c	2015-05-26 13:23:21.873893235 +0200
+@@ -1782,6 +1782,10 @@ PJ_DEF(pj_ssize_t) pjsip_tpmgr_receive_p
+ 		      (int)msg_fragment_size,
+ 		      rdata->msg_info.msg_buf));
+ 	    }
++	
++	    // qliqSOFT - Report to transport manager so that
++	    // the transport manager can send 400 error
++	    mgr->on_rx_msg(mgr->endpt, PJSIP_EINVALIDMSG, rdata);
+ 
+ 	    goto finish_process_fragment;
+ 	}

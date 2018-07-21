@@ -1,0 +1,145 @@
+{
+   "properties": {
+      "Message": {
+         "properties": {
+            "Data": {
+               "properties": {
+                     "qliq_user": {
+                        "required": true,
+                        "type": "object",
+                           "properties": {
+                              "service": {
+                                 "type": "boolean"
+                              },
+                              "avatar": {
+                                 "type": "string"
+                              },
+                              "address": {
+                                 "type": "string"
+                              },
+                              "city": {
+                                 "type": "string"
+                              },
+                              "credentials": {
+                                 "type": "string"
+                              },
+                              "first_name": {
+                                 "required": true,
+                                 "type": "string"
+                              },
+                              "last_name": {
+                                 "required": true,
+                                 "type": "string"
+                              },
+                              "middle": {
+                                 "type": "string"
+                              },
+                              "npi": {
+                                 "type": "string"
+                              },
+                              "phone": {
+                                 "type": "string"
+                              },
+                              "primary_email": {
+                                 "required": true,
+                                 "type": "string"
+                              },
+                              "title": {
+                                 "type": "string"
+                              },
+                              "public_key": {
+                                 "type": "string"
+                              },
+                              "qliq_id": {
+                                 "required": true,
+                                 "type": "string"
+                              },
+                              "sip_uri": {
+                                 "required": true,
+                                 "type": "string"
+                              },
+                              "state": {
+                                 "type": "string"
+                              },
+                              "taxonomy_code": {
+                                 "type": "string"
+                              },
+                              "user_status": {
+                                 "type": "string"
+                              },
+                              "presence_status": {
+                                 "type": "string"
+                              },
+                              "presence_message": {
+                                 "type": "string"
+                              },
+                              "forwarding_qliq_id": {
+                                 "type": "string"
+                              },
+                              "zip": {
+                                 "type": "string"
+                              },
+                              "shared_groups": {
+                                 "properties": {
+                                    "qliq_id": {
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "access_type": {
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "membership_type": {
+                                       "required": true,
+                                       "type": "string"
+                                    },
+                                    "membership_status": {
+                                       "required": true,
+                                       "type": "string"
+                                    }
+                                 },
+                                 "required": false,
+                                 "type": "array"
+                              }
+                           }
+                  }
+               },
+               "required": false,
+               "type": "object"
+            },
+            "Error": {
+               "properties": {
+                  "error_code": {
+                     "required": false,
+                     "type": "string"
+                  },
+                  "error_msg": {
+                     "required": true,
+                     "type": "string"
+                  },
+                  "first_name": {
+                      "type": "string"
+                  },
+                  "last_name": {
+                      "type": "string"
+                  },
+                  "title": {
+                      "type": "string"
+                  },
+                  "organization": {
+                      "type": "string"
+                  },
+                  "avatar": {
+                      "type": "string"
+                  }
+               },
+               "required": false,
+               "type": "object"
+            }
+         },
+         "required": true,
+         "type": "object"
+      }
+   },
+   "type": "object"
+}
